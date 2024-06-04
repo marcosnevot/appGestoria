@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tarea;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
-class TareaController extends Controller
+class TaskController extends Controller
 {
     public function tareas()
     {
-        $tareas = Tarea::orderBy('fecha_creacion', 'desc')->get();
+        $tareas = Task::orderBy('fecha_creacion', 'desc')->get();
         return response()->json($tareas);
     }
 
     public function agregarTarea(Request $request)
     {
-        // Verifica si el usuario autenticado tiene id_rol = 1
-        $user = Auth::user();
-        if ($user->id_rol !== 1) {
-            return response()->json(['error' => 'No tienes permiso para realizar esta acción.'], 403);
-        }
+       
 
         $request->validate([
             'nombre' => 'required|string',
@@ -38,7 +34,7 @@ class TareaController extends Controller
 
         ]);
 
-        $tarea = Tarea::create([
+        $tarea = Task::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'fecha_creacion' => $request->fecha_creacion,
@@ -57,14 +53,10 @@ class TareaController extends Controller
 
     public function editarTarea(Request $request, $id)
     {
-        // Verifica si el usuario está autenticado y tiene el rol necesario
-        $user = Auth::user();
-        if (!$user || $user->id_rol !== 1) {
-            return response()->json(['error' => 'No tienes permiso para realizar esta acción.'], 403);
-        }
+        
 
         // Busca la tarea por su ID
-        $tarea = Tarea::find($id);
+        $tarea = Task::find($id);
 
         // Si la tarea no existe, devuelve un error
         if (!$tarea) {
@@ -103,12 +95,9 @@ class TareaController extends Controller
 
     public function borrarTarea($id)
     {
-        // Verifica si el usuario autenticado tiene id_rol = 1
-        if (Auth::user()->id_rol !== 1) {
-            return response()->json(['error' => 'No tienes permiso para realizar esta acción.'], 403);
-        }
+        
 
-        $tarea = Tarea::findOrFail($id);
+        $tarea = Task::findOrFail($id);
         $tarea->delete();
 
         return response()->json(null, 204);

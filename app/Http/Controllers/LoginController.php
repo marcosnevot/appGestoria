@@ -22,11 +22,7 @@ class LoginController extends Controller
         $user = User::where('name', $request['name'])->firstOrFail();
 
     
-        // Verificar si el usuario tiene el rol de administrador (ID 1)
-        if ($user->id_rol !== 1) {
-            Auth::logout(); 
-            return response()->json(['message' => 'Unauthorized: User is not an admin'], 401);
-        }
+        
 
         $token = $user->createToken('auth_token')->plainTextToken;
 

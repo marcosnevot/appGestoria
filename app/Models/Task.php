@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tarea extends Model
+class Task extends Model
 {
 
     protected $table = 'tarea';
@@ -36,6 +36,6 @@ class Tarea extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'id_cliente');
+        return $this->belongsTo(Customer::class, 'id_cliente');
     }
 }

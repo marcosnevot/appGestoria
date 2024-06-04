@@ -2,39 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ClienteController extends Controller
+class CustomerController extends Controller
 {
     public function clientes()
     {
         try {
-            // Verifica si el usuario autenticado tiene el rol con id 1
-            $user = Auth::user();
-            if ($user->id_rol !== 1) {
-                return response()->json(['error' => 'No tienes permiso para acceder a esta funcionalidad'], 403);
-            }
-
-            // Recupera los datos de los clientes
-            $clientes = Cliente::all();
-
-            // Devuelve los datos de los clientes en formato JSON
+            $clientes = Customer::all();
             return response()->json($clientes);
         } catch (\Exception $e) {
-            // Manejo de excepciones
             return response()->json(['error' => 'Ha ocurrido un error al procesar la solicitud'], 500);
         }
     }
 
     public function agregarCliente(Request $request)
     {
-        // Verifica si el usuario autenticado tiene id_rol = 1
-        $user = Auth::user();
-        if ($user->id_rol !== 1) {
-            return response()->json(['error' => 'No tienes permiso para realizar esta acción.'], 403);
-        }
+        
 
         $request->validate([
             'nombre' => 'required',
@@ -46,7 +32,7 @@ class ClienteController extends Controller
             'observaciones' => 'nullable|string',
         ]);
 
-        $cliente = Cliente::create([
+        $cliente = Customer::create([
             'nombre' => $request->nombre,
             'telefono' => $request->telefono,
             'email' => $request->email,
@@ -62,12 +48,9 @@ class ClienteController extends Controller
 
     public function editarCliente(Request $request, $id)
 {
-    // Verifica si el usuario autenticado tiene id_rol = 1
-    if (Auth::user()->id_rol !== 1) {
-        return response()->json(['error' => 'No tienes permiso para realizar esta acción.'], 403);
-    }
+  
 
-    $cliente = Cliente::findOrFail($id);
+    $cliente = Customer::findOrFail($id);
 
     $request->validate([
         'nombre' => 'required|string|max:255',
@@ -95,12 +78,9 @@ class ClienteController extends Controller
 
     public function borrarCliente($id)
     {
-        // Verifica si el usuario autenticado tiene id_rol = 1
-        if (Auth::user()->id_rol !== 1) {
-            return response()->json(['error' => 'No tienes permiso para realizar esta acción.'], 403);
-        }
+       
 
-        $cliente = Cliente::findOrFail($id);
+        $cliente = Customer::findOrFail($id);
         $cliente->delete();
 
         return response()->json(null, 204);
@@ -108,7 +88,7 @@ class ClienteController extends Controller
 
     public function obtenerNombreCliente($id)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Customer::find($id);
         
         if ($cliente) {
             return response()->json(['nombre' => $cliente->nombre]);
@@ -119,7 +99,7 @@ class ClienteController extends Controller
 
     public function show($id)
     {
-        $cliente = Cliente::find($id);
+        $cliente = Customer::find($id);
 
         if (!$cliente) {
             return response()->json(['error' => 'Cliente no encontrado'], 404);

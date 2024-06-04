@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cliente;
+use App\Models\Customer;
 use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ClienteSeeder extends Seeder
+class CustomerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -356,7 +356,7 @@ class ClienteSeeder extends Seeder
 
         // Itera sobre los nombres y NIFs para crear registros en la base de datos
         for ($i = 0; $i < count($nombres); $i++) {
-            Cliente::create([
+            Customer::create([
                 'nombre' => $nombres[$i],
                 'nif' => $nifs[$i],
             ]);

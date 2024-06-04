@@ -137,7 +137,7 @@
 <footer class="bg-gray-900 text-white py-8">
     <div class="container mx-auto flex justify-between items-center">
         <div class="footer-logo">
-            <img class="logo-img" src="{{ asset('assets/logoGestoria2.png') }}" alt="Logo">
+            <img class="logo-img" src="{{ asset('images/logoGestoria2.png') }}" alt="Logo">
         </div>
     </div>
     <div class="text-center mt-4">

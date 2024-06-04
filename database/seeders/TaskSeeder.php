@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TareaSeeder extends Seeder
+class TaskSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class TareaSeeder extends Seeder
     public function run()
     {
         // Define los datos de ejemplo para expedientes
-        $tareas = [
+        $tasks = [
             [
                 'id_cliente' => 1, // ID del cliente al que pertenece el expediente
                 'nombre' => 'Tarea Uno',
@@ -55,6 +55,6 @@ class TareaSeeder extends Seeder
         ];
 
         // Inserta los datos en la tabla tarea
-        DB::table('tarea')->insert($tareas);
+        DB::table('tarea')->insert($tasks);
     }
 }

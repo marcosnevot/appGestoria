@@ -15,6 +15,7 @@ class CreateWebMessagesTable extends Migration
             $table->string('sede');
             $table->string('asunto');
             $table->text('mensaje');
+            $table->timestamp('fecha_creacion')->useCurrent()->nullable();
             $table->timestamps();
         });
     }

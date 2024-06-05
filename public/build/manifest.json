@@ -1,0 +1,43 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-B88PoRPo.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/navigation.css": {
+    "file": "assets/navigation.css",
+    "src": "resources/css/navigation.css",
+    "isEntry": true
+  },
+  "resources/css/home.css": {
+    "file": "assets/home.css",
+    "src": "resources/css/home.css",
+    "isEntry": true
+  },
+  "resources/css/aboutus.css": {
+    "file": "assets/aboutus.css",
+    "src": "resources/css/aboutus.css",
+    "isEntry": true
+  },
+  "resources/css/services.css": {
+    "file": "assets/services.css",
+    "src": "resources/css/services.css",
+    "isEntry": true
+  },
+  "resources/css/contact.css": {
+    "file": "assets/contact.css",
+    "src": "resources/css/contact.css",
+    "isEntry": true
+  },
+  "resources/css/footer.css": {
+    "file": "assets/footer.css",
+    "src": "resources/css/footer.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-BtUpmekk.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}

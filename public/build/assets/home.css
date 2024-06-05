@@ -1,0 +1,115 @@
+main {
+    width: 100%; /* Asegura que el main ocupe todo el ancho disponible */
+    padding: 0; /* Elimina cualquier relleno interno */
+    margin: 0; /* Elimina cualquier margen externo */
+}
+
+#home {
+    background-color: #1E1E1E;
+    padding: 0;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.sede-container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    height: 680px;
+}
+
+.sede-info {
+    flex: 1;
+    color: white;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    transition: flex-basis 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sede-contenido {
+    margin-top: 80px;
+
+}
+
+.sede-izquierda {
+    background-image: url('../../images/sedeBrb.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.sede-derecha {
+    background-image: url('../../images/sedeMzn.png'); /* Ruta relativa */
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.info {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+    /* Aplicar animación de aparición */
+}
+
+.hidden {
+    animation: fadeOut 0.6s ease forwards;
+    /* Aplicar animación de desaparición */
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+  
+
+    .sede-container {
+        flex-direction: column; /* Cambia la dirección del flexbox a vertical */
+        margin-top: 80px; 
+    }
+
+    .sede-info {
+        flex: none; /* Evita que los elementos ocupen todo el espacio disponible */
+        width: 100%; /* Establece el ancho al 100% para ocupar todo el espacio disponible */
+        height: 300px; /* Establece la altura automática para adaptarse al contenido */
+        box-shadow: none; /* Elimina la sombra en dispositivos móviles */
+    }
+
+    .sede-info:hover {
+        transform: none; /* Elimina la transformación al pasar el ratón en dispositivos móviles */
+    }
+
+    .sede-izquierda,
+    .sede-derecha {
+        background-position: top; /* Ajusta la posición del fondo */
+    }
+
+   
+}

@@ -1,0 +1,61 @@
+.aboutus-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.aboutus-container.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#aboutus {
+    padding-top: 80px;
+    padding-bottom: 120px;
+    background-color: #1e1e1e;
+
+    clip-path: ellipse(75% 70% at 50% 28%);
+}
+
+#aboutus h2 {
+    font-size: 3.25rem;
+    font-weight: 700;
+    color: orange;
+    margin-bottom: 2rem;
+}
+
+#aboutus p {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #fff;
+}
+
+#aboutus::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 15%, #1e1e1e 85%);
+    /* Utiliza un degradado para cambiar el color del espacio creado */
+    z-index: -1;
+    /* Coloca la superposición detrás del contenido de la sección */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+    /* Mantén el mismo clip-path para la forma curva */
+}
+
+
+@media screen and (max-width: 768px) {
+    #aboutus {
+        padding-top: 40px;
+        padding-bottom: 120px;
+        background-color: #1e1e1e;
+    
+        clip-path: ellipse(85% 70% at 50% 28%);
+    }
+}

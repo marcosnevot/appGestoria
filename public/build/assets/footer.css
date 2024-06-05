@@ -1,0 +1,25 @@
+/* Footer */
+footer {
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+}
+
+.footer-logo img {
+    height: 40px; /* Ajusta la altura del logo según sea necesario */
+}
+
+.footer-copyright {
+    margin-top: 10px;
+    font-size: 14px;
+}

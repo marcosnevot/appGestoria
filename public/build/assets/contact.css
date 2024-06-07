@@ -7,11 +7,8 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* Alinear los elementos al principio */
     margin: 0 auto;
-    /* Centrar horizontalmente el contenedor */
     max-width: 1200px;
-    /* Ajustar el ancho máximo del contenedor */
 
 }
 
@@ -19,29 +16,22 @@
 .contact-map {
     padding: 40px;
     width: 48%;
-    /* Ajustar el ancho de ambos elementos */
     background-color: #1e1e1e;
     border-radius: 10px;
-   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
     opacity: 0;
-    /* Configura la opacidad inicial en 0 */
     transform: translateY(50px);
-    /* Desplaza el elemento hacia la derecha */
     transition: opacity 1s ease, transform 1s ease;
     color: white;
-    /* Agrega transiciones suaves */
 }
 
 .form-group {
     margin-bottom: 37px;
-    /* Aumentar el espacio entre los grupos de formulario */
 }
 
 .form-group-policy {
     display: flex;
     margin-bottom: 37px;
     align-items: center;
-    /* Aumentar el espacio entre los grupos de formulario */
 }
 
 input[type="checkbox"] {
@@ -144,66 +134,52 @@ button[type="submit"]:hover {
 @media screen and (max-width: 768px) {
     .contact-container {
         flex-direction: column;
-        /* Cambia la dirección del flexbox a vertical en dispositivos móviles */
         align-items: center;
-        /* Centra los elementos en dispositivos móviles */
         padding: 20px;
     }
 
     .contact-form,
     .contact-map {
         width: 100%;
-        /* Establece el ancho al 100% para ocupar todo el espacio disponible */
         margin-bottom: 30px;
-        /* Añade espacio entre los formularios y el mapa en dispositivos móviles */
     }
 
     .contact-title-container {
         font-size: 1.8rem;
-        /* Reducir el tamaño del título en dispositivos móviles */
     }
 
     .contact-title-line {
         width: 120px;
-        /* Reducir la longitud de la línea del título en dispositivos móviles */
     }
 
     .map-container iframe {
         height: 200px;
-        /* Reducir la altura del mapa en dispositivos móviles */
     }
 
     .location {
         font-size: 14px;
-        /* Reducir el tamaño del texto de la ubicación en dispositivos móviles */
     }
 
     .form-group {
         margin-bottom: 10px;
-        /* Aumentar el espacio entre los grupos de formulario */
     }
 }
 
 @media screen and (max-width: 480px) {
-    /* Estilos para pantallas de hasta 480px de ancho */
 
     .contact-title-container {
         font-size: 1.5rem;
-        /* Reducir el tamaño del título aún más en pantallas más pequeñas */
     }
 
     .contact-title-line {
         width: 100px;
-        /* Reducir la longitud de la línea del título aún más en pantallas más pequeñas */
     }
 
     .map-container iframe {
         height: 150px;
-        /* Reducir aún más la altura del mapa en pantallas más pequeñas */
     }
 
     .location {
         font-size: 12px;
-        /* Reducir aún más el tamaño del texto de la ubicación en pantallas más pequeñas */
     }
 }

@@ -11,12 +11,12 @@ footer {
 
 .footer-logo {
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-logo img {
-    height: 40px; /* Ajusta la altura del logo según sea necesario */
+    height: 40px;
 }
 
 .footer-copyright {

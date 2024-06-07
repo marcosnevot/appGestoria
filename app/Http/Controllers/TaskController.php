@@ -9,16 +9,18 @@ use Illuminate\Support\Facades\Log;
 
 class TaskController extends Controller
 {
+    // Obtiene las tareas de la base de datos
     public function tareas()
     {
         $tareas = Task::orderBy('fecha_creacion', 'desc')->get();
         return response()->json($tareas);
     }
 
+    // Agrega una tarea
     public function agregarTarea(Request $request)
     {
-       
 
+        // Valida los datos
         $request->validate([
             'nombre' => 'required|string',
             'descripcion' => 'nullable|string',
@@ -34,6 +36,7 @@ class TaskController extends Controller
 
         ]);
 
+        // Crea la tarea con los datos que recibe
         $tarea = Task::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
@@ -51,10 +54,9 @@ class TaskController extends Controller
         return response()->json($tarea, 201);
     }
 
+    // Edita una tarea
     public function editarTarea(Request $request, $id)
     {
-        
-
         // Busca la tarea por su ID
         $tarea = Task::find($id);
 
@@ -93,11 +95,12 @@ class TaskController extends Controller
     }
 
 
+    // Elimina una tarea
     public function borrarTarea($id)
     {
-        
-
+        // Busca la tarea por su ID
         $tarea = Task::findOrFail($id);
+        // Borra la tarea
         $tarea->delete();
 
         return response()->json(null, 204);

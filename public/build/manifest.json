@@ -34,6 +34,12 @@
     "src": "resources/css/footer.css",
     "isEntry": true
   },
+  "resources/js/custom.js": {
+    "file": "assets/custom.js",
+    "name": "custom",
+    "src": "resources/js/custom.js",
+    "isEntry": true
+  },
   "resources/js/app.js": {
     "file": "assets/app-BtUpmekk.js",
     "name": "app",

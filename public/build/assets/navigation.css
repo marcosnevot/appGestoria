@@ -9,7 +9,7 @@
     background-color: #000000;
     color: rgb(255, 255, 255);
     text-align: center;
-    z-index: 1001; 
+    z-index: 1001;
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
@@ -24,40 +24,40 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px; /* Mostrar inicialmente el navbar */
+    height: 80px;
     padding: 50px;
     padding-right: 140px;
     padding-left: 140px;
-    transition: transform 0.3s ease; /* Agrega transición suave para el desplazamiento */
-    transform: translateY(0); /* Asegura que el navbar esté en su posición inicial */
+    transition: transform 0.3s ease;
+    transform: translateY(0);
 }
 
 .navbar.hidden {
-    transform: translateY(-100%); /* Oculta el navbar al desplazarse hacia abajo */
+    transform: translateY(-100%);
 }
 
 
 
 .logo-img {
     height: 50px;
-    min-width:250px;
+    min-width: 250px;
 }
 
 .nav-links {
     display: flex;
-    align-items: center; /* Alinea verticalmente los enlaces */
-    margin-left: auto; /* Mueve los enlaces al extremo derecho */
+    align-items: center;
+    margin-left: auto;
 }
 
 .nav-link {
     color: white;
     text-decoration: none;
     margin-left: 50px;
-    transition: color 0.3s ease; /* Transición suave para el cambio de color */
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #ffc107; /* Cambia el color al pasar el ratón sobre el enlace */
+    color: #ffc107;
 }
 
 .nav-link::after {
@@ -65,12 +65,12 @@
     display: block;
     width: 0;
     height: 1px;
-    background-color: #ffc107; /* Color del subrayado */
-    transition: width 0.3s ease; /* Transición suave para el ancho */
+    background-color: #ffc107;
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover::after {
-    width: 100%; /* Ajusta el ancho del subrayado al 100% cuando se pasa el cursor sobre el enlace */
+    width: 100%;
 }
 
 .menu-btn {
@@ -78,8 +78,8 @@
 }
 
 .container {
-    max-width: 100%; /* Limita el ancho del contenedor al 100% del ancho de la pantalla */
-    overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* Media queries */
@@ -97,13 +97,14 @@
         padding-right: 80px;
         padding-left: 80px;
     }
+
     .nav-links {
-       padding: auto;
+        padding: auto;
     }
 }
 
 @media screen and (max-width: 800px) {
-  
+
 
     .navbar {
         padding-right: 50px;
@@ -126,37 +127,37 @@
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 80px; /* Ajusta el espacio para que no se superponga con la barra de contacto */
-        left: 0; /* Ajusta la posición del menú desplegable para que esté alineado a la izquierda */
+        top: 80px;
+        left: 0;
         right: 0;
-        width: 100%; /* Ajusta el ancho del menú desplegable para que ocupe todo el ancho de la pantalla */
+        width: 100%;
         background-color: #1e1e1ee5;
         padding: 20px;
         z-index: 999;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Añade sombra */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .nav-link {
-        margin: 10px 0; /* Añade espacio entre los elementos del menú */
+        margin: 10px 0;
     }
 
     .nav-link:hover {
-        background-color: rgba(255, 255, 255, 0.1); /* Cambia el color de fondo al pasar el ratón */
-        border-radius: 3px; /* Añade bordes redondeados */
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
     }
 }
 
 @media screen and (max-width: 400px) {
     .navbar {
-        width: 100%; /* Limita el ancho del navbar al 100% de la pantalla */
-        padding: 20px; /* Ajusta el espacio interno del navbar */
+        width: 100%;
+        padding: 20px;
     }
 
     .logo {
-        padding: 0; /* Elimina el espacio adicional para el logo */
+        padding: 0;
     }
 
     .menu-btn img {
-        height: 25px; /* Reduce el tamaño del icono del menú hamburguesa */
+        height: 25px;
     }
 }

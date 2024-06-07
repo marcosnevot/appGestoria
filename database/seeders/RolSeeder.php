@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Role; // Asegúrate de importar el modelo Rol si está en un namespace diferente
+use App\Models\Role; 
 
 class RolSeeder extends Seeder
 {
@@ -15,6 +15,7 @@ class RolSeeder extends Seeder
 
         ]);
 
+       // Crea un rol de empleado
         Role::create([
             'nombre' => 'employee',
             

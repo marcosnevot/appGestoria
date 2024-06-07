@@ -23,12 +23,10 @@
 .service-list-container {
     margin-right: 20px;
     width: 100%;
-    /* Añade un margen lateral */
 }
 
 .service-details-container {
     margin-left: 20px;
-    /* Añade un margen lateral */
 }
 
 .service-list {
@@ -50,13 +48,11 @@
     margin-bottom: 40px;
     border: 2px solid white;
     opacity: 0;
-    /* Configura la opacidad inicial en 0 */
     transition: opacity 1s ease;
 }
 
 .service.appear {
     opacity: 1;
-    /* Cuando se aplica la clase 'appear', cambia la opacidad a 1 */
 }
 
 .service:hover {
@@ -84,18 +80,13 @@
     width: 100%;
     font-size: 1.1rem;
     opacity: 0;
-    /* Configura la opacidad inicial en 0 */
     transform: translateX(50px);
-    /* Desplaza el elemento hacia la derecha */
     transition: opacity 1s ease, transform 1s ease;
-    /* Agrega transiciones suaves */
 }
 
 .service-details-container.appear {
     opacity: 1;
-    /* Cuando se aplica la clase 'appear', cambia la opacidad a 1 */
     transform: translateX(0);
-    /* Cuando se aplica la clase 'appear', establece el desplazamiento a 0 para mostrarlo en su posición original */
 }
 
 .service-details {
@@ -104,32 +95,23 @@
 
 .service-details-description ul {
     list-style: none;
-    /* Eliminar los puntos de la lista */
     padding-left: 0;
 }
 
-/* Estilos para cada elemento de la lista */
 .service-details-description li {
     margin-bottom: 10px;
-    /* Aumenté el espacio entre elementos de la lista */
     position: relative;
     padding-left: 30px;
-    /* Aumenté el espacio a la izquierda para dar más espacio al icono */
     line-height: 1.4;
-    /* Espacio entre líneas para mejorar la legibilidad */
 }
 
-/* Estilos para el icono */
 .service-details-description li::before {
     content: "\2713";
-    /* Código Unicode del símbolo de check */
     position: absolute;
     left: 0;
     top: 0;
     font-size: 1.2em;
-    /* Tamaño del icono */
     color: orange;
-    /* Cambié el color del icono a verde */
 }
 
 
@@ -151,7 +133,6 @@
     animation: fadeOut 0.3s ease forwards;
 }
 
-/* Añade este estilo para resaltar el servicio seleccionado */
 .service.active {
     background-color: #f4f4f4;
     border: 2px solid orange;
@@ -161,7 +142,6 @@
     animation: fade-in 1s ease;
 }
 
-/* Define la animación */
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -175,90 +155,68 @@
 @media screen and (max-width: 768px) {
     .services-container {
         flex-direction: column;
-        /* Cambia la dirección del flexbox a vertical en dispositivos móviles */
         align-items: center;
-      
-
-        /* Centra los elementos en dispositivos móviles */
     }
 
     .services-title-container {
         font-size: 2rem;
-        /* Reduce el tamaño de fuente del título en dispositivos móviles */
     }
 
     .services-title-line {
         width: 150px;
-        /* Reduce la longitud de la línea del título en dispositivos móviles */
     }
 
     .service-list-container,
     .service-details-container {
         margin: 0;
-        /* Elimina el margen lateral en dispositivos móviles */
         width: 100%;
-        /* Establece el ancho al 100% para ocupar todo el espacio disponible */
     }
 
     .service-list {
         margin-bottom: 10px;
-
-        /* Reduce el espacio entre los elementos de la lista en dispositivos móviles */
     }
 
     .service {
         margin-bottom: 20px;
- 
+
     }
 
     .service-details-container {
         padding: 15px;
-        /* Reduce el relleno interno en dispositivos móviles */
         font-size: 1rem;
-        /* Reduce el tamaño de fuente en dispositivos móviles */
     }
 
     .service-details-header {
         margin-bottom: 10px;
-        /* Reduce el margen inferior del encabezado en dispositivos móviles */
     }
 
     .service-details-title {
         font-size: 1.2rem;
-        /* Reduce el tamaño de fuente del título de detalles del servicio en dispositivos móviles */
     }
 }
 
 
 @media screen and (max-width: 480px) {
-    /* Estilos para pantallas de hasta 480px de ancho */
 
     .services-title-container {
         font-size: 1.8rem;
-        /* Reducir el tamaño del título en pantallas más pequeñas */
     }
 
     .services-title-line {
         width: 120px;
-        /* Reducir la longitud de la línea del título en pantallas más pequeñas */
     }
 
     .service {
         padding: 15px;
-        /* Reducir el relleno interno de los servicios en pantallas más pequeñas */
         margin-bottom: 15px;
-        /* Reducir el margen inferior entre los servicios en pantallas más pequeñas */
     }
 
     .service-details-container {
         padding: 10px;
-        /* Reducir el relleno interno de los detalles del servicio en pantallas más pequeñas */
         font-size: 0.9rem;
-        /* Reducir el tamaño de fuente de los detalles del servicio en pantallas más pequeñas */
     }
 
     .service-details-title {
         font-size: 1rem;
-        /* Reducir el tamaño de fuente del título de detalles del servicio en pantallas más pequeñas */
     }
 }

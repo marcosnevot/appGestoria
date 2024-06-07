@@ -25,7 +25,7 @@
 </section>
 
 
-
+<!-- Sección About Us -->
 <section id="aboutus" class="py-12 bg-white">
     <div class="aboutus-container max-w-screen-md mx-auto px-4">
         <div class="text-center mb-8">
@@ -39,7 +39,7 @@
     </div>
 </section>
 
-
+<!-- Sección Services -->
 <section id="services" class="py-12 bg-gray-100">
     <div class="services-title-container text-center">
         <h2>Nuestros Servicios</h2>
@@ -75,7 +75,7 @@
     </div>
 </section>
 
-
+<!-- Sección Contact -->
 <section id="contact" class="py-12 bg-white">
     <div class="contact-container">
         <div class="contact-form">
@@ -106,7 +106,7 @@
                 </div>
                 <div class="form-group-policy">
                     <input type="checkbox" id="privacy" name="privacy" required>
-                    <label for="privacy">He leído y acepto las <a class="underline" href="/politicas-de-privacidad" target="_blank">políticas de privacidad</a>.</label>
+                    <label for="privacy">He leído y acepto las <a class="underline" href="https://www.privacypolicies.com/live/5fb9c1cc-6036-4cc3-b8a0-cbb0cb6fd8fd" target="_blank">políticas de privacidad</a>.</label>
                 </div>
                 <button type="submit">Enviar</button>
             </form>
@@ -134,6 +134,7 @@
 
 </section>
 
+<!-- Footer -->
 <footer class="bg-gray-900 text-white py-8">
     <div class="container mx-auto flex justify-between items-center">
         <div class="footer-logo">
@@ -141,6 +142,6 @@
         </div>
     </div>
     <div class="text-center mt-4">
-        <p class="text-gray-400">© 2024 Alás, Vigil y Nevot Asesores SL. Todos los derechos reservados. <a href="url_de_tu_politica_de_privacidad" class="text-gray-400 underline"><br>Política de privacidad</a></p>
+        <p class="text-gray-400">© 2024 Alás, Vigil y Nevot Asesores SL. Todos los derechos reservados. <a href="https://www.privacypolicies.com/live/5fb9c1cc-6036-4cc3-b8a0-cbb0cb6fd8fd" class="text-gray-400 underline"><br>Política de privacidad</a></p>
     </div>
 </footer>

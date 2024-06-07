@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/auth/login', [LoginController::class, 'loginUser']);
 
+// Realiza una prueba de conexión a la base de datos
 Route::get('/prueba-conexion', function () {
     try {
         DB::connection()->getPdo();
@@ -39,39 +40,43 @@ Route::get('/prueba-conexion', function () {
 });
 
 
+// Endpoints protegidos por auth:sanctum
 Route::middleware('auth:sanctum')->group(function () {
 
+    // Cierre de sesión
     Route::post('/auth/logout', [LogoutController::class, 'logout']);
 
+    // Gestión de clientes
     Route::get('/clientes', [CustomerController::class, 'clientes']);
     Route::get('clientes/{id}', [CustomerController::class, 'show']);
-
-
     Route::post('/clientes/agregar', [CustomerController::class, 'agregarCliente']);
     Route::put('/clientes/{id}/editar', [CustomerController::class, 'editarCliente']);
     Route::delete('/clientes/{id}/borrar', [CustomerController::class, 'borrarCliente']);
 
+    // Gesytión de tareas
     Route::get('/tareas', [TaskController::class, 'tareas']);
     Route::post('/tareas/agregar', [TaskController::class, 'agregarTarea']);
     Route::put('/tareas/{id}/editar', [TaskController::class, 'editarTarea']);
     Route::delete('/tareas/{id}/borrar', [TaskController::class, 'borrarTarea']);
 
+    // Gestión de archivos
     Route::get('/files', [FileController::class, 'listFiles']);
     Route::post('/files/upload', [FileController::class, 'upload']);
     Route::delete('/files/{fileName}/delete', [FileController::class, 'delete']);
     Route::get('/files/{fileName}/download', [FileController::class, 'download']);
-
     Route::get('/files/{fileName}/content',  [FileController::class, 'getFileContent']);
 
+    // Gestión de usuarios y roles
     Route::get('/users', [UserController::class, 'users']);
     Route::put('users/{id}/online', [UserController::class, 'setOnline']);
     Route::put('users/{id}/offline', [UserController::class, 'setOffline']);
-    
-    Route::get('/roles', [RoleController::class, 'roles']);
     Route::put('/users/{id}/editar', [UserController::class, 'update']);
     Route::post('/users/agregar', [UserController::class, 'store']);
     Route::delete('/users/{id}/borrar', [UserController::class, 'destroy']);
+    Route::get('/roles', [RoleController::class, 'roles']);
 
+
+    // Gestión de los mensajes del formulario de contacto 
     Route::get('/webmessages', [WebMessageController::class, 'webMessages']);
     Route::delete('/webmessages/{id}/borrar', [WebMessageController::class, 'borrarWebMessage']);
 

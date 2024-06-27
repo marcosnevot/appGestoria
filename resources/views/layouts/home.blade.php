@@ -33,8 +33,8 @@
             <div class="aboutus-title-line mx-auto my-4"></div>
         </div>
         <div class="text-center">
-            <p class="mb-4">Nos especializamos en brindar servicios integrales de asesoría y gestión fiscal, contable y laboral. Con sedes en Barbastro y Monzón, nuestro equipo de profesionales está comprometido con tu éxito, ofreciendo soluciones personalizadas y un trato cercano.</p>
-            <p class="mb-4">Facilitamos tus gestiones diarias, asegurando siempre la máxima eficiencia y profesionalidad. Confía en nosotros para ayudarte a alcanzar tus objetivos y superar cualquier desafío.</p>
+            <p class="mb-4">Nos especializamos en brindar <b>servicios integrales de asesoría y gestión fiscal, contable y laboral</b>. Con sedes en <b>Barbastro</b> y <b>Monzón</b>, nuestro equipo de profesionales está comprometido con tu éxito, ofreciendo soluciones personalizadas y un trato cercano.</p>
+            <p class="mb-4">Facilitamos tus gestiones diarias desde <b>1993</b>, asegurando siempre la máxima eficiencia y profesionalidad. Confía en nosotros para ayudarte a alcanzar tus objetivos y superar cualquier desafío.</p>
         </div>
     </div>
 </section>

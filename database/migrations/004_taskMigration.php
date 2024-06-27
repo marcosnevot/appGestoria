@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('facturado')->default(false)->nullable();
             $table->decimal('suplidos', 10, 2)->nullable();
             $table->decimal('coste', 10, 2)->nullable();
+            $table->decimal('precio', 10, 2)->nullable();
             $table->enum('estado', ['pendiente', 'en_progreso', 'completada'])->default('pendiente')->nullable();
             $table->string('tipo')->nullable();
             $table->text('observaciones')->nullable();

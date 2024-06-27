@@ -31,6 +31,7 @@ class TaskController extends Controller
             'tipo' => 'nullable|string',
             'suplidos' => 'nullable|numeric',
             'coste' => 'nullable|numeric',
+            'precio' => 'nullable|numeric',
             'observaciones' => 'nullable|string',
             'creado_por' => 'nullable|string',
             'estado' => 'nullable|in:pendiente,en_progreso,completada',
@@ -48,6 +49,7 @@ class TaskController extends Controller
             'tipo' => $request->tipo,
             'suplidos' => $request->suplidos,
             'coste' => $request->coste,
+            'precio' => $request->precio,
             'observaciones' => $request->observaciones,
             'creado_por' => $request->creado_por,
             'estado' => $request->estado,
@@ -77,6 +79,7 @@ class TaskController extends Controller
             'facturado' => 'nullable|boolean',
             'suplidos' => 'nullable|numeric',
             'coste' => 'nullable|numeric',
+            'precio' => 'nullable|numeric',
              'estado' => 'nullable|in:pendiente,en_progreso,completada',
         ]);
 
@@ -89,6 +92,7 @@ class TaskController extends Controller
         $tarea->facturado = $request->facturado;
         $tarea->suplidos = $request->suplidos;
         $tarea->coste = $request->coste;
+        $tarea->precio = $request->precio;
         $tarea->estado = $request->estado;
 
         // Guarda los cambios en la base de datos

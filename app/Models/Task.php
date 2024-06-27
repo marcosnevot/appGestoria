@@ -18,6 +18,7 @@ class Task extends Model
         'facturado',
         'suplidos',
         'coste',
+        'precio',
         'estado',
         'observaciones',
         'tipo',
@@ -34,6 +35,7 @@ class Task extends Model
         'facturado' => 'boolean',
         'suplidos' => 'decimal:2',
         'coste' => 'decimal:2',
+        'precio' => 'decimal:2',
     ];
 
     public function cliente()

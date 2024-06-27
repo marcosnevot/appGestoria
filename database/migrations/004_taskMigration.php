@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('nombre', 100);
             $table->text('descripcion')->nullable();
             $table->timestamp('fecha_creacion')->useCurrent()->nullable();
+            $table->timestamp('fecha_fin')->nullable();
             $table->boolean('facturado')->default(false)->nullable();
             $table->decimal('suplidos', 10, 2)->nullable();
             $table->decimal('coste', 10, 2)->nullable();

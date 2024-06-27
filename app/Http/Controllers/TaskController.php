@@ -25,6 +25,7 @@ class TaskController extends Controller
             'nombre' => 'required|string',
             'descripcion' => 'nullable|string',
             'fecha_creacion' => 'nullable|date',
+            'fecha_fin' => 'nullable|date',
             'id_cliente' => 'required|integer|exists:cliente,id',
             'facturado' => 'nullable|boolean',
             'tipo' => 'nullable|string',
@@ -41,6 +42,7 @@ class TaskController extends Controller
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'fecha_creacion' => $request->fecha_creacion,
+            'fecha_fin' => $request->fecha_fin,
             'id_cliente' => $request->id_cliente,
             'facturado' => $request->facturado,
             'tipo' => $request->tipo,
@@ -69,6 +71,7 @@ class TaskController extends Controller
         $request->validate([
             'nombre' => 'required|string',
             'descripcion' => 'nullable|string',
+            'fecha_fin' => 'nullable|date',
             'tipo' => 'nullable|string',
             'observaciones' => 'nullable|string',
             'facturado' => 'nullable|boolean',
@@ -80,6 +83,7 @@ class TaskController extends Controller
         // Actualiza los campos de la tarea con los datos de la solicitud
         $tarea->nombre = $request->nombre;
         $tarea->descripcion = $request->descripcion;
+        $tarea->fecha_fin = $request->fecha_fin;
         $tarea->tipo = $request->tipo;
         $tarea->observaciones = $request->observaciones;
         $tarea->facturado = $request->facturado;

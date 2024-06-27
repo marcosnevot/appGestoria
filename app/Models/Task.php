@@ -14,6 +14,7 @@ class Task extends Model
         'nombre',
         'descripcion',
         'fecha_creacion',
+        'fecha_fin',
         'facturado',
         'suplidos',
         'coste',
@@ -29,6 +30,7 @@ class Task extends Model
 
     protected $casts = [
         'fecha_creacion' => 'datetime',
+        'fecha_fin' => 'datetime',
         'facturado' => 'boolean',
         'suplidos' => 'decimal:2',
         'coste' => 'decimal:2',

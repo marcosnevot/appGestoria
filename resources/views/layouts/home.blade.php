@@ -108,6 +108,10 @@
                     <input type="checkbox" id="privacy" name="privacy" required>
                     <label for="privacy">He leído y acepto las <a class="underline" href="https://www.privacypolicies.com/live/5fb9c1cc-6036-4cc3-b8a0-cbb0cb6fd8fd" target="_blank">políticas de privacidad</a>.</label>
                 </div>
+                <input type="hidden" id="recaptchaToken" name="recaptchaToken">
+                <div id="recaptchaError" class="error-message" style="display: none;">
+                    Error de validación reCAPTCHA. Por favor, verifica que no eres un robot.
+                </div>
                 <button type="submit">Enviar</button>
             </form>
         </div>

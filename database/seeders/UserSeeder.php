@@ -17,6 +17,12 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'), 
             'id_rol' => Role::where('nombre', 'admin')->first()->id,
         ]);
+        User::create([
+            'name' => 'nacho123',
+            'email' => 'nacho123@admin.com',
+            'password' => Hash::make('12345678'), 
+            'id_rol' => Role::where('nombre', 'admin')->first()->id,
+        ]);
         
     }
 }

@@ -40,13 +40,13 @@ main {
 }
 
 .sede-izquierda {
-    background-image: url('../../images/sedeBrb.png');
+    background-image: url('../../images/sedeBrb.jpg');
     background-size: cover;
     background-position: center;
 }
 
 .sede-derecha {
-    background-image: url('../../images/sedeMzn.png');
+    background-image: url('../../images/sedeMzn.jpg');
     background-size: cover;
     background-position: center;
 }

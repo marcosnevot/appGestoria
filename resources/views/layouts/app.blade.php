@@ -15,7 +15,7 @@
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lc_BQ0qAAAAAJeWVYatDuILddLdOOx9BllvVmZ5"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
     @vite(['resources/css/app.css','resources/css/navigation.css','resources/css/aboutus.css','resources/css/services.css','resources/css/home.css', 'resources/css/contact.css',"resources/css/footer.css",'resources/js/custom.js','resources/js/app.js'])
@@ -32,43 +32,7 @@
         </main>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Evitar el envío automático del formulario
-
-            grecaptcha.ready(function () {
-                grecaptcha.execute('6Lc_BQ0qAAAAAJeWVYatDuILddLdOOx9BllvVmZ5', { action: 'submit' })
-                    .then(function (token) {
-                        document.getElementById('recaptchaToken').value = token;
-
-                        // Enviar el formulario si el token se ha obtenido
-                        fetch('{{ route("form.store") }}', {
-                            method: 'POST',
-                            body: new FormData(document.getElementById('contactForm')),
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                // Si el envío fue exitoso, puedes hacer algo aquí, como mostrar un mensaje de éxito
-                                console.log('Mensaje enviado exitosamente');
-                            } else if (data.error) {
-                                // Mostrar el mensaje de error de reCAPTCHA o de validación del formulario
-                                console.error('Error:', data.error);
-                                document.getElementById('recaptchaError').style.display = 'block';
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error al enviar el formulario:', error);
-                        });
-                    })
-                    .catch(function (error) {
-                        console.error('Error al ejecutar reCAPTCHA:', error);
-                        // Manejar errores de ejecución de reCAPTCHA
-                        document.getElementById('recaptchaError').style.display = 'block';
-                    });
-            });
-        });
-    });
+         
 
             // JavaScript para la funcionalidad del menú hamburguesa
             document.querySelector('.menu-btn').addEventListener('click', function() {

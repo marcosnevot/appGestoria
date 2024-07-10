@@ -89,7 +89,7 @@
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                    <input type="email" id="email" name="email" placeholder="Correo Electrónico">
                 </div>
                 <div class="form-group">
                     <select id="sede" name="sede" required>
@@ -99,22 +99,30 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="asunto" name="asunto" placeholder="Asunto" required>
+                    <input type="text" id="asunto" name="asunto" placeholder="Asunto">
                 </div>
                 <div class="form-group">
-                    <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Mensaje"></textarea>
+                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Mensaje"></textarea>
                 </div>
                 <div class="form-group-policy">
                     <input type="checkbox" id="privacy" name="privacy" required>
                     <label for="privacy">He leído y acepto las <a class="underline" href="https://www.privacypolicies.com/live/5fb9c1cc-6036-4cc3-b8a0-cbb0cb6fd8fd" target="_blank">políticas de privacidad</a>.</label>
                 </div>
-                <input type="hidden" id="recaptchaToken" name="recaptchaToken">
-                <div id="recaptchaError" class="error-message" style="display: none;">
-                    Error de validación reCAPTCHA. Por favor, verifica que no eres un robot.
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                    @error('g-recaptcha-response')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
+
+
                 <button type="submit">Enviar</button>
             </form>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         </div>
+
         <section id="location"></section>
 
         <div class="contact-map">
@@ -149,3 +157,5 @@
         <p class="text-gray-400">© 2024 Alás, Vigil y Nevot Asesores SL. Todos los derechos reservados. <a href="https://www.privacypolicies.com/live/5fb9c1cc-6036-4cc3-b8a0-cbb0cb6fd8fd" class="text-gray-400 underline"><br>Política de privacidad</a></p>
     </div>
 </footer>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>

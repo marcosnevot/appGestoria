@@ -124,16 +124,27 @@ document.addEventListener('DOMContentLoaded', function () {
 // Manejo de la sumisión del formulario de contacto con jQuery
 $(document).ready(function () {
     $('#contactForm').submit(function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Evitar el envío estándar del formulario
 
-        const formData = $(this).serialize();
+        // Obtener el token de reCAPTCHA
+        const recaptcha = $('#g-recaptcha-response').val();
+        
+        // Verificar si el reCAPTCHA ha sido marcado
+        if (!recaptcha) {
+            alert('Por favor, marca el reCAPTCHA antes de enviar el formulario.');
+            return;
+        }
 
+        // Obtener los datos del formulario
+        const formData = $(this).serialize() + '&g-recaptcha-response=' + recaptcha;
+
+        // Enviar el formulario via AJAX
         $.ajax({
             type: 'POST',
-            url: $(this).attr('action'),
-            data: formData,
-            success: function () {
-                location.reload();
+            url: $(this).attr('action'), // Obtener la URL del formulario
+            data: formData, // Datos del formulario incluyendo el token de reCAPTCHA
+            success: function (response) {
+                location.reload(); // Ejemplo: recargar la página después de enviar correctamente
             },
             error: function (xhr) {
                 console.error(xhr.responseText);
@@ -142,3 +153,8 @@ $(document).ready(function () {
         });
     });
 });
+
+
+
+
+

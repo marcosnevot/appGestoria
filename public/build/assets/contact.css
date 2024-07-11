@@ -28,6 +28,21 @@
     margin-bottom: 37px;
 }
 
+.form-groupH {
+    display: flex;
+    margin-bottom: 37px;
+    gap: 20px; /* Espacio entre los dos elementos */
+}
+
+.form-groupH .form-group {
+    flex: 1; /* Toma todo el espacio disponible */
+}
+
+.form-groupH input[type="text"], 
+.form-groupH select {
+    width: 100%; /* Ambos elementos ocupan todo el ancho disponible */
+}
+
 .form-group-policy {
     display: flex;
     margin-bottom: 37px;

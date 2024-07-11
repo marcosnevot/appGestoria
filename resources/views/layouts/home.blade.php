@@ -83,7 +83,7 @@
                 <h2>Contacto</h2>
                 <div class="contact-title-line"></div>
             </div>
-            <form id="contactForm" action="{{ route('form.store') }}" method="post">
+            <form id="contactForm" action="{{ route('form.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
@@ -91,16 +91,22 @@
                 <div class="form-group">
                     <input type="email" id="email" name="email" placeholder="Correo Electrónico">
                 </div>
-                <div class="form-group">
+
+                <div class="form-groupH">
+                    <input type="text" id="asunto" name="asunto" placeholder="Asunto">
+
                     <select id="sede" name="sede" required>
                         <option value="" disabled selected>Selecciona una sede</option>
                         <option value="Barbastro">Barbastro</option>
                         <option value="Monzón">Monzón</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <input type="text" id="asunto" name="asunto" placeholder="Asunto">
+                    <label for="adjuntos">Subir archivos (máx. 2MB cada uno):</label>
+                    <input type="file" id="adjuntos" name="adjuntos[]" multiple accept=".pdf, image/*">
                 </div>
+
                 <div class="form-group">
                     <textarea id="mensaje" name="mensaje" rows="5" placeholder="Mensaje"></textarea>
                 </div>
@@ -108,6 +114,7 @@
                     <input type="checkbox" id="privacy" name="privacy" required>
                     <label for="privacy">He leído y acepto las <a class="underline" href="https://www.privacypolicies.com/live/5fb9c1cc-6036-4cc3-b8a0-cbb0cb6fd8fd" target="_blank">políticas de privacidad</a>.</label>
                 </div>
+
                 <div class="form-group">
                     <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                     @error('g-recaptcha-response')
@@ -116,6 +123,7 @@
                     </span>
                     @enderror
                 </div>
+          
 
 
                 <button type="submit">Enviar</button>

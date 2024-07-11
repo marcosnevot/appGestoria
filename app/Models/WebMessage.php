@@ -10,5 +10,5 @@ class WebMessage extends Model
     use HasFactory;
     protected $table = 'web_messages';
 
-    protected $fillable = ['nombre', 'email', 'sede', 'asunto', 'mensaje', 'fecha_creacion'];
+    protected $fillable = ['nombre', 'email', 'sede', 'asunto', 'mensaje', 'fecha_creacion', 'adjuntos'];
 }

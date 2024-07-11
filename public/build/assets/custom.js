@@ -128,30 +128,62 @@ $(document).ready(function () {
 
         // Obtener el token de reCAPTCHA
         const recaptcha = $('#g-recaptcha-response').val();
-        
         // Verificar si el reCAPTCHA ha sido marcado
+
         if (!recaptcha) {
             alert('Por favor, marca el reCAPTCHA antes de enviar el formulario.');
             return;
         }
 
-        // Obtener los datos del formulario
-        const formData = $(this).serialize() + '&g-recaptcha-response=' + recaptcha;
+        // Crear un nuevo objeto FormData desde el formulario
+        var formData = new FormData(this);
+
+        // Obtener el token CSRF del campo meta en el formulario
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        formData.append('_token', csrfToken); // Agregar el token CSRF al FormData
+
+        // Agregar el token de reCAPTCHA a los datos del formulario
+        formData.append('g-recaptcha-response', recaptcha);
 
         // Enviar el formulario via AJAX
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'), // Obtener la URL del formulario
             data: formData, // Datos del formulario incluyendo el token de reCAPTCHA
+            processData: false, // No procesar los datos (necesario para enviar archivos)
+            contentType: false, // No configurar el tipo de contenido (necesario para enviar archivos)
+
             success: function (response) {
                 location.reload(); // Ejemplo: recargar la página después de enviar correctamente
             },
             error: function (xhr) {
                 console.error(xhr.responseText);
-                alert('Ocurrió un error al enviar el formulario.');
+                // Mostrar errores de validación utilizando SweetAlert2
+                mostrarErrores(JSON.parse(xhr.responseText).errors);
+                // Desmarcar el reCAPTCHA
+                grecaptcha.reset(); 
             }
         });
     });
+    // Función para mostrar los errores en forma de alerta con SweetAlert2
+    function mostrarErrores(errors) {
+        let errorMessage = '<ul>';
+        for (const key in errors) {
+            if (errors.hasOwnProperty(key)) {
+                errors[key].forEach(error => {
+                    errorMessage += `<li>${error}</li>`;
+                });
+            }
+        }
+        errorMessage += '</ul>';
+
+        // Mostrar la alerta de error utilizando SweetAlert2
+        Swal.fire({
+            icon: 'error',
+            title: 'Error de validación',
+            html: errorMessage
+        });
+    }
 });
 
 

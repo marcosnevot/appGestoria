@@ -126,24 +126,12 @@ $(document).ready(function () {
     $('#contactForm').submit(function (event) {
         event.preventDefault(); // Evitar el envío estándar del formulario
 
-        // Obtener el token de reCAPTCHA
-        const recaptcha = $('#g-recaptcha-response').val();
-        // Verificar si el reCAPTCHA ha sido marcado
+          // Obtener el token CSRF
+          var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-        if (!recaptcha) {
-            alert('Por favor, marca el reCAPTCHA antes de enviar el formulario.');
-            return;
-        }
-
-        // Crear un nuevo objeto FormData desde el formulario
-        var formData = new FormData(this);
-
-        // Obtener el token CSRF del campo meta en el formulario
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
-        formData.append('_token', csrfToken); // Agregar el token CSRF al FormData
-
-        // Agregar el token de reCAPTCHA a los datos del formulario
-        formData.append('g-recaptcha-response', recaptcha);
+          // Crear un objeto FormData con los datos del formulario
+          var formData = new FormData($('#contactForm')[0]);
+          formData.append('_token', csrfToken); // Agregar el token CSRF
 
         // Enviar el formulario via AJAX
         $.ajax({
@@ -160,8 +148,7 @@ $(document).ready(function () {
                 console.error(xhr.responseText);
                 // Mostrar errores de validación utilizando SweetAlert2
                 mostrarErrores(JSON.parse(xhr.responseText).errors);
-                // Desmarcar el reCAPTCHA
-                grecaptcha.reset(); 
+      
             }
         });
     });

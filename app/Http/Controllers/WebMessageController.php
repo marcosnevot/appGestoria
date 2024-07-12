@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WebMessage;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
+use ReCaptcha\ReCaptcha;
 
 class WebMessageController extends Controller
 {
@@ -15,54 +18,44 @@ class WebMessageController extends Controller
     public function store(Request $request)
     {
 
+        // Validación de los campos del formulario
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
             'email' => 'nullable|email',
             'asunto' => 'nullable|string',
             'sede' => 'required|string',
-            'g-recaptcha-response' => 'required',
             'mensaje' => 'nullable|string',
-            'adjuntos.*' => 'nullable|file|max:2048|mimes:pdf,jpeg,png,jpg,gif', // Archivos adjuntos: máximo 2MB, PDF y fotos
+            'adjuntos.*' => 'nullable|file|max:2048|mimes:pdf,jpeg,png,jpg,gif',
         ]);
 
-        
-        $recaptcha = new \ReCaptcha\ReCaptcha(env('RECAPTCHA_SECRET_KEY'));
-        $response = $recaptcha->verify($request->input('g-recaptcha-response'), $request->ip());
-
-        if ($validator->fails() || !$response->isSuccess()) {
-            $errors = $validator->errors()->merge(['g-recaptcha-response' => ['validation.captcha']]);
-            return response()->json(['errors' => $errors], 422);
-        } 
-
-        // Almacenar los archivos adjuntos y obtener sus rutas
-    $adjuntos = [];
-    foreach ($request->file('adjuntos') as $file) {
-        // Validar el tamaño del archivo (en caso de que la validación de Laravel falle)
-        if ($file->getSize() > 2048000) { // Tamaño en bytes (2MB)
-            $errors = new \Illuminate\Support\MessageBag;
-            $errors->add('adjuntos', 'El archivo "' . $file->getClientOriginalName() . '" excede el tamaño permitido de 2MB.');
-            return response()->json(['errors' => $errors], 422);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        // Validar el tipo de archivo (PDF y fotos solamente)
-        $allowedTypes = ['pdf', 'jpeg', 'png', 'jpg', 'gif'];
-        if (!in_array($file->getClientOriginalExtension(), $allowedTypes)) {
-            $errors = new \Illuminate\Support\MessageBag;
-            $errors->add('adjuntos', 'El archivo "' . $file->getClientOriginalName() . '" no es un PDF ni una imagen válida.');
-            return response()->json(['errors' => $errors], 422);
+        // Almacenamiento de archivos adjuntos
+        $adjuntos = [];
+         // Verificar si se adjuntaron archivos
+    if ($request->hasFile('adjuntos')) {
+        foreach ($request->file('adjuntos') as $file) {
+            // Validación de tamaño y tipo de archivo
+            $validator = Validator::make(['adjunto' => $file], [
+                'adjunto' => 'required|file|max:2048|mimes:pdf,jpeg,png,jpg,gif',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            }
+
+            // Generar un nombre único para el archivo
+            $fileName = time() . '_' . $file->getClientOriginalName();
+
+            // Guardar el archivo en el directorio 'public/uploadsWeb'
+            $path = $file->storeAs('public/uploadsWeb', $fileName);
+
+            // Obtener la ruta de almacenamiento relativa
+            $adjuntos[] = str_replace('public', 'storage', $path); // Cambiar 'public' por 'storage' en la ruta
         }
-
-        // Generar un nombre único para el archivo
-        $fileName = time() . '_' . $file->getClientOriginalName();
-
-        // Guardar el archivo en el directorio 'public/uploadsWeb' utilizando Storage::putFileAs
-        $path = $file->storeAs('public/uploadsWeb', $fileName);
-
-        // Obtener la ruta de almacenamiento relativa
-        $adjuntos[] = str_replace('public', 'storage', $path); // Cambiar 'public' por 'storage' en la ruta
     }
-
-      
 
         // Crear y almacenar el mensaje en la base de datos
         $webMessage = new WebMessage();

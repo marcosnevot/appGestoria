@@ -28,7 +28,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::post('/contactForm', [WebMessageController::class, 'store'])->name('form.store')->middleware('throttle:10,1');
+Route::post('/contactForm', [WebMessageController::class, 'store'])
+    ->name('form.store')
+    ->middleware(['throttle:10,1']);
 
 
 

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('web_messages', function (Blueprint $table) {
-            $table->json('attachments')->nullable();
+            $table->text('adjuntos')->nullable();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('web_messages', function (Blueprint $table) {
-            $table->dropColumn('attachments');
+            $table->dropColumn('adjuntos');
         });
     }
 };

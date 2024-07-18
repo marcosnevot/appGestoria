@@ -131,7 +131,7 @@ $(document).ready(function () {
 
           // Crear un objeto FormData con los datos del formulario
           var formData = new FormData($('#contactForm')[0]);
-          formData.append('_token', csrfToken); // Agregar el token CSRF
+          formData.append('_token', csrfToken); // Agregar el token CSRF 
 
         // Enviar el formulario via AJAX
         $.ajax({

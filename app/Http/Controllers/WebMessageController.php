@@ -34,28 +34,28 @@ class WebMessageController extends Controller
 
         // Almacenamiento de archivos adjuntos
         $adjuntos = [];
-         // Verificar si se adjuntaron archivos
-    if ($request->hasFile('adjuntos')) {
-        foreach ($request->file('adjuntos') as $file) {
-            // Validación de tamaño y tipo de archivo
-            $validator = Validator::make(['adjunto' => $file], [
-                'adjunto' => 'required|file|max:2048|mimes:pdf,jpeg,png,jpg,gif',
-            ]);
+        // Verificar si se adjuntaron archivos
+        if ($request->hasFile('adjuntos')) {
+            foreach ($request->file('adjuntos') as $file) {
+                // Validación de tamaño y tipo de archivo
+                $validator = Validator::make(['adjunto' => $file], [
+                    'adjunto' => 'required|file|max:2048|mimes:pdf,jpeg,png,jpg,gif',
+                ]);
 
-            if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()], 422);
+                if ($validator->fails()) {
+                    return response()->json(['errors' => $validator->errors()], 422);
+                }
+
+                // Generar un nombre único para el archivo
+                $fileName = time() . '_' . $file->getClientOriginalName();
+
+                // Guardar el archivo en el directorio 'public/uploadsWeb'
+                $path = $file->storeAs('public/uploadsWeb', $fileName);
+
+                // Obtener la ruta de almacenamiento relativa
+                $adjuntos[] = str_replace('public', 'storage', $path); // Cambiar 'public' por 'storage' en la ruta
             }
-
-            // Generar un nombre único para el archivo
-            $fileName = time() . '_' . $file->getClientOriginalName();
-
-            // Guardar el archivo en el directorio 'public/uploadsWeb'
-            $path = $file->storeAs('public/uploadsWeb', $fileName);
-
-            // Obtener la ruta de almacenamiento relativa
-            $adjuntos[] = str_replace('public', 'storage', $path); // Cambiar 'public' por 'storage' en la ruta
         }
-    }
 
         // Crear y almacenar el mensaje en la base de datos
         $webMessage = new WebMessage();
@@ -75,6 +75,12 @@ class WebMessageController extends Controller
     public function webMessages()
     {
         $webMessages = WebMessage::orderBy('fecha_creacion', 'desc')->get();
+
+        foreach ($webMessages as $message) {
+            // Convertir la cadena JSON en un arreglo PHP
+            $message->adjuntos = json_decode($message->adjuntos);
+        }
+
         return response()->json($webMessages);
     }
 
@@ -87,4 +93,20 @@ class WebMessageController extends Controller
 
         return response()->json(null, 204);
     }
+
+    public function downloadAttachment($fileName)
+    {
+        // Ruta del archivo en el almacenamiento
+        $filePath = storage_path('app/public/uploadsWeb/' . $fileName);
+
+        // Verificar si el archivo existe
+        if (file_exists($filePath)) {
+            return response()->download($filePath, $fileName);
+        }
+
+        // Si el archivo no existe, devolver una respuesta JSON
+        return response()->json(['success' => false, 'message' => 'El archivo no existe']);
+    }
+    
+   
 }

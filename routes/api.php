@@ -79,6 +79,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Gestión de los mensajes del formulario de contacto 
     Route::get('/webmessages', [WebMessageController::class, 'webMessages']);
     Route::delete('/webmessages/{id}/borrar', [WebMessageController::class, 'borrarWebMessage']);
+    Route::get('/webmessages/download/{fileName}', [WebMessageController::class, 'downloadAttachment'])->name('file.download');
 
 
 

@@ -115,6 +115,8 @@
                     <label for="privacy">He leído y acepto las <a class="underline" href="https://www.privacypolicies.com/live/5fb9c1cc-6036-4cc3-b8a0-cbb0cb6fd8fd" target="_blank">políticas de privacidad</a>.</label>
                 </div>
 
+                <input type="hidden" name="recaptcha_token" id="recaptcha_token">
+
                 <button type="submit">Enviar</button>
             </form>
         </div>
@@ -153,3 +155,4 @@
         <p class="text-gray-400">© 2024 Alás, Vigil y Nevot Asesores SL. Todos los derechos reservados. <a href="https://www.privacypolicies.com/live/5fb9c1cc-6036-4cc3-b8a0-cbb0cb6fd8fd" class="text-gray-400 underline"><br>Política de privacidad</a></p>
     </div>
 </footer>
+

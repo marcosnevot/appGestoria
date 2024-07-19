@@ -16,6 +16,9 @@
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcaAhQqAAAAAFamvFY3b9SVjFLXSgnFyILDgAzr"></script> 
+    <script src="{{ asset('js/custom.js') }}"></script>
+
 
     @vite(['resources/css/app.css','resources/css/navigation.css','resources/css/aboutus.css','resources/css/services.css','resources/css/home.css', 'resources/css/contact.css',"resources/css/footer.css",'resources/js/custom.js','resources/js/app.js'])
 </head>

@@ -18,6 +18,29 @@ class WebMessageController extends Controller
     public function store(Request $request)
     {
 
+        // Validar reCAPTCHA
+        $recaptchaToken = $request->input('recaptcha_token');
+        $recaptchaSecret = env('RECAPTCHA_SECRET_KEY');
+        
+        if (!$recaptchaSecret) {
+            return response()->json(['errors' => ['recaptcha' => 'reCAPTCHA secret key not configured']], 500);
+        }
+        
+        $client = new Client();
+
+        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+            'form_params' => [
+                'secret' => $recaptchaSecret,
+                'response' => $recaptchaToken,
+            ],
+        ]);
+
+        $body = json_decode((string) $response->getBody());
+
+        if (!$body->success) {
+            return response()->json(['errors' => ['recaptcha' => 'reCAPTCHA verification failed']], 422);
+        }
+
         // Validación de los campos del formulario
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
@@ -107,6 +130,4 @@ class WebMessageController extends Controller
         // Si el archivo no existe, devolver una respuesta JSON
         return response()->json(['success' => false, 'message' => 'El archivo no existe']);
     }
-    
-   
 }

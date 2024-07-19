@@ -8,6 +8,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('layouts.app', ['recaptcha_site_key' => env('RECAPTCHA_SITE_KEY')]);
+        $recaptchaSiteKey = config('services.recaptcha.site');
+
+        return view('layouts.app', compact('recaptchaSiteKey'));
     }
 }

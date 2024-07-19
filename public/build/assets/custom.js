@@ -121,37 +121,64 @@ document.addEventListener('DOMContentLoaded', function () {
     containersToObserve.forEach(container => observer.observe(container));
 });
 
+
+
 // Manejo de la sumisión del formulario de contacto con jQuery
 $(document).ready(function () {
+    // Clave del sitio de reCAPTCHA
+    const siteKey = '6LcaAhQqAAAAAFamvFY3b9SVjFLXSgnFyILDgAzr'; // Reemplaza con tu clave del sitio
+
+    // Asegúrate de que el script de reCAPTCHA se haya cargado
+    if (typeof grecaptcha === 'undefined') {
+        console.error('reCAPTCHA no está definido. Asegúrate de que el script se cargue correctamente.');
+        Swal.fire('Error', 'No se pudo cargar reCAPTCHA. Intenta nuevamente.', 'error');
+        return;
+    }
+
     $('#contactForm').submit(function (event) {
         event.preventDefault(); // Evitar el envío estándar del formulario
 
-          // Obtener el token CSRF
-          var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        // Ejecuta reCAPTCHA y obtiene el token
+        grecaptcha.ready(function () {
+            grecaptcha.execute(siteKey, { action: 'submit' }).then(function (token) {
+                // Coloca el token en un campo oculto del formulario
+                $('#recaptcha_token').val(token);
 
-          // Crear un objeto FormData con los datos del formulario
-          var formData = new FormData($('#contactForm')[0]);
-          formData.append('_token', csrfToken); // Agregar el token CSRF 
+                // Obtener el token CSRF
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                console.log('Token CSRF:', csrfToken);
+                console.log('Token reCAPTCHA:', token);
 
-        // Enviar el formulario via AJAX
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'), // Obtener la URL del formulario
-            data: formData, // Datos del formulario incluyendo el token de reCAPTCHA
-            processData: false, // No procesar los datos (necesario para enviar archivos)
-            contentType: false, // No configurar el tipo de contenido (necesario para enviar archivos)
+                // Crear un objeto FormData con los datos del formulario
+                var formData = new FormData($('#contactForm')[0]);
+                formData.append('_token', csrfToken); // Agregar el token CSRF
 
-            success: function (response) {
-                location.reload(); // Ejemplo: recargar la página después de enviar correctamente
-            },
-            error: function (xhr) {
-                console.error(xhr.responseText);
-                // Mostrar errores de validación utilizando SweetAlert2
-                mostrarErrores(JSON.parse(xhr.responseText).errors);
-      
-            }
+                // Enviar el formulario vía AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: $('#contactForm').attr('action'), // Obtener la URL del formulario
+                    data: formData, // Datos del formulario incluyendo el token de reCAPTCHA
+                    processData: false, // No procesar los datos (necesario para enviar archivos)
+                    contentType: false, // No configurar el tipo de contenido (necesario para enviar archivos)
+
+                    success: function (response) {
+                        Swal.fire('Éxito', 'Tu mensaje ha sido enviado correctamente.', 'success');
+                        $('#contactForm')[0].reset();
+                        $('#recaptcha_token').val('');
+                    },
+                    error: function (xhr) {
+                        console.error(xhr.responseText);
+                        // Mostrar errores de validación utilizando SweetAlert2
+                        mostrarErrores(JSON.parse(xhr.responseText).errors);
+                    }
+                });
+            }).catch(function (error) {
+                console.error('Error al obtener el token de reCAPTCHA:', error);
+                Swal.fire('Error', 'No se pudo obtener el token de reCAPTCHA. Intenta nuevamente.', 'error');
+            });
         });
     });
+
     // Función para mostrar los errores en forma de alerta con SweetAlert2
     function mostrarErrores(errors) {
         let errorMessage = '<ul>';
@@ -172,6 +199,7 @@ $(document).ready(function () {
         });
     }
 });
+
 
 
 

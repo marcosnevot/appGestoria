@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Alás, Vigil y Nevot Asesores</title> <!-- Modifica el título según sea necesario -->
+    <!-- Título Dinámico -->
+    <title>@yield('title', 'Alás, Vigil y Nevot Asesores')</title>
     <link rel="icon" type="image/png" href="{{ asset('assets/logoApp3.png') }}">
 
     <!-- Fonts -->
@@ -16,7 +17,7 @@
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcaAhQqAAAAAFamvFY3b9SVjFLXSgnFyILDgAzr"></script> 
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcaAhQqAAAAAFamvFY3b9SVjFLXSgnFyILDgAzr"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
 
 
@@ -126,7 +127,7 @@
                 resetSedeContent(this);
             });
         </script>
-      
+
 
     </div>
 </body>

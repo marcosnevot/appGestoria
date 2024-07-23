@@ -34,6 +34,11 @@
     "src": "resources/css/footer.css",
     "isEntry": true
   },
+  "resources/css/politica-privacidad.css": {
+    "file": "assets/politica-privacidad.css",
+    "src": "resources/css/politica-privacidad.css",
+    "isEntry": true
+  },
   "resources/js/custom.js": {
     "file": "assets/custom.js",
     "name": "custom",

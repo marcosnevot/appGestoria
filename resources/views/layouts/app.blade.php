@@ -34,64 +34,22 @@
             @include('layouts.home')
 
             <!-- Popup de Cookies -->
-            <div id="cookie-popup" style="
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: #ffffff;
-    padding: 20px 5%;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-    font-family: 'Arial', sans-serif;
-    font-size: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 15px;
-">
-                <div style="flex: 2; min-width: 300px;">
-                    <p style="margin: 0; font-size: 1.1rem; line-height: 1.5;">
+            <!-- Popup de Cookies -->
+            <div id="cookie-popup" class="cookie-popup">
+                <div class="cookie-popup-text">
+                    <p>
                         Esta web solo utiliza las cookies técnicas estrictamente necesarias para su correcto funcionamiento.
                     </p>
-                    <p style="margin: 0; font-size: 1rem; line-height: 1.5;">
+                    <p>
                         Consulta nuestras
-                        <a href="{{ route('politica-privacidad') }}" style="color: #FFA500; font-weight: bold; text-decoration: underline;">
-                            Política de Privacidad</a> y 
-                        <a href="{{ route('aviso-legal') }}" style="color: #FFA500; font-weight: bold; text-decoration: underline;">
-                            Aviso Legal</a>
-                        .
+                        <a href="{{ route('politica-privacidad') }}" class="cookie-link">Política de Privacidad</a> y
+                        <a href="{{ route('aviso-legal') }}" class="cookie-link">Aviso Legal</a>.
+                        
                     </p>
                 </div>
-                <div style="display: flex; flex-shrink: 0; gap: 10px;">
-                    <button id="accept-cookies" style="
-            background-color: #FFA500;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        " onmouseover="this.style.backgroundColor='#e57048';" onmouseout="this.style.backgroundColor='#FFA500';">
-                        Aceptar
-                    </button>
-                    <a href="{{ route('politica-cookies') }}" style="
-            text-decoration: none;
-            background-color: transparent;
-            color: #FFA500;
-            border: 1px solid #FFA500;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        " onmouseover="this.style.backgroundColor='#FFA500'; this.style.color='#ffffff';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#FFA500';">
-                        Política Cookies
-                    </a>
+                <div class="cookie-popup-buttons">
+                    <button id="accept-cookies" class="cookie-button accept-button">Aceptar</button>
+                    <a href="{{ route('politica-cookies') }}" class="cookie-button info-button">Política Cookies</a>
                 </div>
             </div>
 

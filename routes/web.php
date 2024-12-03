@@ -32,9 +32,17 @@ Route::post('/contactForm', [WebMessageController::class, 'store'])
     ->name('form.store')
     ->middleware(['throttle:10,1']);
 
-    Route::get('/politica-privacidad', function () {
-        return view('politica-privacidad');
-    })->name('politica-privacidad');
-    
+Route::get('/politica-privacidad', function () {
+    return view('politica-privacidad');
+})->name('politica-privacidad');
 
-require __DIR__.'/auth.php';
+Route::get('/aviso-legal', function () {
+    return view('aviso-legal');
+})->name('aviso-legal');
+
+Route::get('/politica-cookies', function () {
+    return view('politica-cookies');
+})->name('politica-cookies');
+
+
+require __DIR__ . '/auth.php';

@@ -31,16 +31,19 @@
 .form-groupH {
     display: flex;
     margin-bottom: 37px;
-    gap: 20px; /* Espacio entre los dos elementos */
+    gap: 20px;
+    /* Espacio entre los dos elementos */
 }
 
 .form-groupH .form-group {
-    flex: 1; /* Toma todo el espacio disponible */
+    flex: 1;
+    /* Toma todo el espacio disponible */
 }
 
-.form-groupH input[type="text"], 
+.form-groupH input[type="text"],
 .form-groupH select {
-    width: 100%; /* Ambos elementos ocupan todo el ancho disponible */
+    width: 100%;
+    /* Ambos elementos ocupan todo el ancho disponible */
 }
 
 .form-group-policy {
@@ -144,6 +147,38 @@ button[type="submit"]:hover {
     opacity: 1;
     transform: translateY(0);
 }
+
+.form-group-policy label {
+    font-size: 16px;
+    /* Tamaño más grande */
+    color: #ffffff;
+    /* Letras en blanco */
+    font-weight: 500;
+    /* Negrita ligera */
+}
+
+.form-group-policy {
+    display: flex;
+    align-items: center;
+    /* Centra verticalmente el checkbox y el texto */
+    margin-top: 10px;
+}
+
+.form-group-policy input[type="checkbox"] {
+    margin-right: 10px;
+    /* Espacio entre el checkbox y el texto */
+    transform: scale(1.2);
+    /* Aumenta el tamaño del checkbox */
+}
+
+.form-group-policy a {
+    color: #6cb2eb;
+    /* Color del enlace más visible */
+    font-weight: 600;
+    /* Resalta el enlace */
+    text-decoration: underline;
+}
+
 
 
 @media screen and (max-width: 768px) {

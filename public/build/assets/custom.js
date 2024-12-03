@@ -86,6 +86,19 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => serviceDetailsContainer.classList.remove('animate'), 500);
         });
     });
+
+
+    // Control de aceptación de cookies
+    document.getElementById('accept-cookies').addEventListener('click', function () {
+        document.getElementById('cookie-popup').style.display = 'none';
+        localStorage.setItem('cookiesAccepted', 'true'); // Guardar en localStorage
+    });
+
+    // Mostrar popup solo si no se ha aceptado previamente
+    if (!localStorage.getItem('cookiesAccepted')) {
+        document.getElementById('cookie-popup').style.display = 'flex';
+    }
+
 });
 
 // Intersection Observer para animar la aparición de servicios en la vista

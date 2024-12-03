@@ -1,14 +1,19 @@
 <!-- HTML -->
- 
+
 <section id="home">
     <div class="container mx-auto">
         <div class="sede-container" onclick="scrollToSection(event, 'location')">
             <!-- Sede 1: Izquierda -->
             <div class="sede-info sede-izquierda" id="sede-izquierda">
                 <div class="sede-contenido">
-                    <h2 class="city" style="font-size: 3rem; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">BARBASTRO</h2>
+                    <h2 class="city" style="font-size: 3rem; font-weight: 600; color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000; margin-bottom: 1rem;">
+                        BARBASTRO
+                    </h2>
                     <p class="empresa" style="font-size: 1.25rem; color: #cccccc; margin-bottom: 1.5rem;"><br></p>
-                    <p class="info hidden" style="font-size: 1.25rem; color: #cccccc; margin-bottom: 1.5rem;">C. Baños Árabes, 6, 2ºA, 22300 Barbastro, Huesca | 974315330</p>
+                    <p class="info hidden" style="font-size: 1.25rem; color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000; padding: 0.5rem 1rem; margin-bottom: 1.5rem;">
+                        C. Baños Árabes, 6, 2ºA, 22300 Barbastro, Huesca | 974315330
+                    </p>
+
 
                 </div>
             </div>
@@ -16,9 +21,15 @@
             <!-- Sede 2: Derecha -->
             <div class="sede-info sede-derecha" id="sede-derecha">
                 <div class="sede-contenido">
-                    <h2 class="city" style="font-size: 3rem; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">MONZÓN</h2>
+                    <h2 class="city" style="font-size: 3rem; font-weight: 600; color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000; margin-bottom: 1rem;">
+                        MONZÓN
+                    </h2>
                     <p class="empresa" style="font-size: 1.25rem; color: #cccccc; margin-bottom: 1.5rem;"><br></p>
-                    <p class="info hidden" style="font-size: 1.25rem; color: #cccccc; margin-bottom: 1.5rem;">C. del Barón de Eroles, 40, Bajos, 22400 Monzón, Huesca | 974404858</p>
+                    <p class="info hidden" style="font-size: 1.25rem; color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000; padding: 0.5rem 1rem; margin-bottom: 1.5rem;">
+                        C. del Barón de Eroles, 40, Bajos, 22400 Monzón, Huesca | 974404858
+                    </p>
+
+
                 </div>
             </div>
         </div>
@@ -111,15 +122,31 @@
                 <div class="form-group">
                     <textarea id="mensaje" name="mensaje" rows="5" placeholder="Mensaje"></textarea>
                 </div>
-                <div class="form-group-policy">
-                    <input type="checkbox" id="privacy" name="privacy" required>
-                    <label for="privacy">He leído y acepto las <a class="underline" href="{{ route('politica-privacidad') }}" target="_blank">políticas de privacidad</a>.</label>
+                <!-- Sección de Info Básica -->
+                <div class="basic-info mt-4 text-gray-600 text-sm">
+                    <p><strong>Responsable:</strong> NEVOT ASESORES, S.L.</p>
+                    <p><strong>Finalidad:</strong> Gestionar su solicitud de información y/o contacto.</p>
+                    <p>
+                        <strong>Derechos:</strong> Acceder, rectificar y suprimir los datos, así como otros derechos, como se explica en la
+                        información adicional que puede consultar en el apartado
+                        <a href="{{ route('politica-privacidad') }}" target="_blank" class="text-blue-500 underline">política de privacidad</a> de la web alasvigilnevot.es.
+                    </p>
+                    <div class="form-group-policy mt-2">
+                        <input type="checkbox" id="data-consent" name="data-consent" required>
+                        <label for="data-consent">
+                            He leído la <a href="{{ route('politica-privacidad') }}" target="_blank">Política de Privacidad</a> y consiento el tratamiento de mis datos personales.
+                        </label>
+                    </div>
+
                 </div>
+
 
                 <input type="hidden" name="recaptcha_token" id="recaptcha_token">
 
                 <button type="submit">Enviar</button>
             </form>
+
+
         </div>
 
         <section id="location"></section>
@@ -148,12 +175,27 @@
 <!-- Footer -->
 <footer class="bg-gray-900 text-white py-8">
     <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo del Footer -->
         <div class="footer-logo">
             <img class="logo-img" src="{{ asset('images/logoGestoria2.png') }}" alt="Logo">
         </div>
     </div>
     <div class="text-center mt-4">
-        <p class="text-gray-400">© 2024 Alás, Vigil y Nevot Asesores SL. Todos los derechos reservados. <a href="{{ route('politica-privacidad') }}" class="text-gray-400 underline"><br>Política de privacidad</a></p>
+        <p class="text-gray-400 text-sm">
+            © 2024 Alás, Vigil y Nevot Asesores SL. Todos los derechos reservados.
+        </p>
+        <nav class="mt-2">
+            <a href="{{ route('aviso-legal') }}" class="text-gray-400 hover:text-white underline mx-2">
+                Aviso Legal
+            </a>
+            |
+            <a href="{{ route('politica-privacidad') }}" class="text-gray-400 hover:text-white underline mx-2">
+                Política de Privacidad
+            </a>
+            |
+            <a href="{{ route('politica-cookies') }}" class="text-gray-400 hover:text-white underline mx-2">
+                Política de Cookies
+            </a>
+        </nav>
     </div>
 </footer>
-

@@ -30,30 +30,31 @@
         @include('layouts.navigation')
 
         <!-- Contenido de la Página -->
+        <!-- Contenido Dinámico -->
         <main>
-            @include('layouts.home')
-
-            <!-- Popup de Cookies -->
-            <!-- Popup de Cookies -->
-            <div id="cookie-popup" class="cookie-popup">
-                <div class="cookie-popup-text">
-                    <p>
-                        Esta web solo utiliza las cookies técnicas estrictamente necesarias para su correcto funcionamiento.
-                    </p>
-                    <p>
-                        Consulta nuestras
-                        <a href="{{ route('politica-privacidad') }}" class="cookie-link">Política de Privacidad</a> y
-                        <a href="{{ route('aviso-legal') }}" class="cookie-link">Aviso Legal</a>.
-                        
-                    </p>
-                </div>
-                <div class="cookie-popup-buttons">
-                    <button id="accept-cookies" class="cookie-button accept-button">Aceptar</button>
-                    <a href="{{ route('politica-cookies') }}" class="cookie-button info-button">Política Cookies</a>
-                </div>
-            </div>
-
+            @yield('content')
         </main>
+
+        <!-- Popup de Cookies -->
+        <!-- Popup de Cookies -->
+        <div id="cookie-popup" class="cookie-popup">
+            <div class="cookie-popup-text">
+                <p>
+                    Esta web solo utiliza las cookies técnicas estrictamente necesarias para su correcto funcionamiento.
+                </p>
+                <p>
+                    Consulta nuestras
+                    <a href="{{ route('politica-privacidad') }}" class="cookie-link">Política de Privacidad</a> y
+                    <a href="{{ route('aviso-legal') }}" class="cookie-link">Aviso Legal</a>.
+
+                </p>
+            </div>
+            <div class="cookie-popup-buttons">
+                <button id="accept-cookies" class="cookie-button accept-button">Aceptar</button>
+                <a href="{{ route('politica-cookies') }}" class="cookie-button info-button">Política Cookies</a>
+            </div>
+        </div>
+
 
         <script>
             // JavaScript para la funcionalidad del menú hamburguesa

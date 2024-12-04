@@ -10,6 +10,39 @@ body {
     color: #333;
 }
 
+/* Botón de Volver */
+.btn-volver {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #1e1e1e;
+    border: 1px solid orange;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease, border-width 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.btn-volver:hover {
+    color: orange; /* Cambia el color del texto */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Más sombra */
+    transform: scale(1.05); /* Aumenta el tamaño */
+    border-width: 2px; /* Aumenta el grosor del borde */
+}
+
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .btn-volver {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+
 .container {
     max-width: 900px;
     margin: 60px auto;
@@ -19,7 +52,9 @@ body {
     border-radius: 10px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: #000000;
     margin-bottom: 20px;
     font-weight: 300;
@@ -41,7 +76,8 @@ h3 {
     margin-top: 40px;
 }
 
-p, ul {
+p,
+ul {
     margin-bottom: 20px;
     font-size: 1.1em;
 }

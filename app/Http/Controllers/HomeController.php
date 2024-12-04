@@ -10,6 +10,6 @@ class HomeController extends Controller
     {
         $recaptchaSiteKey = config('services.recaptcha.site');
 
-        return view('layouts.app', compact('recaptchaSiteKey'));
+        return view('home', compact('recaptchaSiteKey')); // Apunta a una vista específica
     }
 }

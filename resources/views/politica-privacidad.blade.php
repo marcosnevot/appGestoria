@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,12 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logoApp3.png') }}">
     @vite(['resources/css/politica-privacidad.css'])
 </head>
+
 <body>
+
+    <!-- Botón de Volver -->
+    <a href="{{ route('index') }}" class="btn-volver">Volver al Inicio</a>
+
     <h1>Política de Privacidad</h1>
 
     <h2>Información Adicional sobre Protección de Datos</h2>
@@ -52,4 +58,5 @@
     <p>No obstante, NEVOT ASESORES, S.L. no puede garantizar la absoluta invulnerabilidad de los sistemas, por tanto, no asume ninguna responsabilidad por los daños y perjuicios derivados de alteraciones que terceros puedan causar en los sistemas informáticos, documentos electrónicos o ficheros del usuario.</p>
     <p>Si opta por abandonar nuestro sitio web a través de enlaces a sitios web no pertenecientes a nuestra entidad, NEVOT ASESORES, S.L. no se hará responsable de las políticas de privacidad de dichos sitios web ni de las cookies que éstos puedan almacenar en el ordenador del usuario.</p>
 </body>
+
 </html>

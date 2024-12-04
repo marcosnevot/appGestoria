@@ -1,5 +1,9 @@
 <!-- HTML -->
+@extends('layouts.app')
 
+@section('title', 'Inicio - Alás, Vigil y Nevot Asesores')
+
+@section('content')
 <section id="home">
     <div class="container mx-auto">
         <div class="sede-container" onclick="scrollToSection(event, 'location')">
@@ -199,3 +203,5 @@
         </nav>
     </div>
 </footer>
+
+@endsection

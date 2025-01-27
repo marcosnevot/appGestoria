@@ -10,30 +10,22 @@
             <!-- Sede 1: Izquierda -->
             <div class="sede-info sede-izquierda" id="sede-izquierda">
                 <div class="sede-contenido">
-                    <h2 class="city" style="font-size: 3rem; font-weight: 600; color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000; margin-bottom: 1rem;">
-                        BARBASTRO
-                    </h2>
-                    <p class="empresa" style="font-size: 1.25rem; color: #cccccc; margin-bottom: 1.5rem;"><br></p>
-                    <p class="info hidden" style="font-size: 1.25rem; color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000; padding: 0.5rem 1rem; margin-bottom: 1.5rem;">
+                    <h2 class="city">BARBASTRO</h2>
+                    <p class="empresa"><br></p>
+                    <p class="info hidden">
                         C. Baños Árabes, 6, 2ºA, 22300 Barbastro, Huesca | 974315330
                     </p>
-
-
                 </div>
             </div>
 
             <!-- Sede 2: Derecha -->
             <div class="sede-info sede-derecha" id="sede-derecha">
                 <div class="sede-contenido">
-                    <h2 class="city" style="font-size: 3rem; font-weight: 600; color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000; margin-bottom: 1rem;">
-                        MONZÓN
-                    </h2>
-                    <p class="empresa" style="font-size: 1.25rem; color: #cccccc; margin-bottom: 1.5rem;"><br></p>
-                    <p class="info hidden" style="font-size: 1.25rem; color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000; padding: 0.5rem 1rem; margin-bottom: 1.5rem;">
+                    <h2 class="city">MONZÓN</h2>
+                    <p class="empresa"><br></p>
+                    <p class="info hidden">
                         C. del Barón de Eroles, 40, Bajos, 22400 Monzón, Huesca | 974404858
                     </p>
-
-
                 </div>
             </div>
         </div>

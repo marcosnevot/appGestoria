@@ -34,6 +34,33 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.city {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+    margin-bottom: 1rem;
+}
+
+.empresa {
+    font-size: 1.25rem;
+    color: #cccccc;
+    margin-bottom: 1.5rem;
+}
+
+.info {
+    font-size: 1.25rem;
+    color: #ffffff;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+
 .sede-contenido {
     margin-top: 80px;
 

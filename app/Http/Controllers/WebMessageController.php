@@ -21,11 +21,11 @@ class WebMessageController extends Controller
         // Validar reCAPTCHA
         $recaptchaToken = $request->input('recaptcha_token');
         $recaptchaSecret = env('RECAPTCHA_SECRET_KEY');
-        
+
         if (!$recaptchaSecret) {
             return response()->json(['errors' => ['recaptcha' => 'reCAPTCHA secret key not configured']], 500);
         }
-        
+
         $client = new Client();
 
         $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
@@ -119,15 +119,18 @@ class WebMessageController extends Controller
 
     public function downloadAttachment($fileName)
     {
-        // Ruta del archivo en el almacenamiento
-        $filePath = storage_path('app/public/uploadsWeb/' . $fileName);
+        // Decodifica el nombre del archivo recibido
+        $decodedFileName = urldecode($fileName);
+        $filePath = storage_path('app/public/uploadsWeb/' . $decodedFileName);
+
+        // Log::info('Token válido. Procesando la descarga para el archivo: ' . $decodedFileName);
 
         // Verificar si el archivo existe
         if (file_exists($filePath)) {
-            return response()->download($filePath, $fileName);
+            return response()->download($filePath, $decodedFileName);
         }
 
-        // Si el archivo no existe, devolver una respuesta JSON
-        return response()->json(['success' => false, 'message' => 'El archivo no existe']);
+        Log::error('El archivo no existe: ' . $filePath);
+        return response()->json(['success' => false, 'message' => 'El archivo no existe'], 404);
     }
 }

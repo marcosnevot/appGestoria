@@ -8,7 +8,9 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebMessageController;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -82,9 +84,27 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/webmessages/download/{fileName}', [WebMessageController::class, 'downloadAttachment'])->name('file.download');
 
 
-
+    // routes/api.php
 
 });
 
+Route::post('/auth/token', function (Request $request) {
+    $credentials = [
+        'name' => env('WEB_API_USERNAME'),
+        'password' => env('WEB_API_PASSWORD'),
+    ];
+
+    if (!Auth::attempt($credentials)) {
+        return response()->json(['error' => 'Unauthorized'], 401);
+    }
+
+    $user = \App\Models\User::where('name', $credentials['name'])->firstOrFail();
+    $token = $user->createToken('auth_token')->plainTextToken;
+
+    return response()->json([
+        'accessToken' => $token,
+        'token_type' => 'Bearer',
+    ]);
+})->middleware('throttle:10,1'); // 10 intentos por minuto
 
 

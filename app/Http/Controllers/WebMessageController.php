@@ -95,17 +95,41 @@ class WebMessageController extends Controller
 
 
     // Devuelve los mensajes ordenados por fecha
-    public function webMessages()
+    public function webMessages(Request $request)
     {
-        $webMessages = WebMessage::orderBy('fecha_creacion', 'desc')->get();
+        // Obtiene los parámetros de búsqueda y filtro desde la solicitud
+        $search = $request->input('search', null); // Búsqueda general
+        $sede = $request->input('sede', null);     // Filtro por sede
 
+        // Construcción de la consulta
+        $query = WebMessage::query();
+
+        // Filtra por texto de búsqueda (nombre, asunto, mensaje o email)
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('nombre', 'like', '%' . $search . '%')
+                    ->orWhere('asunto', 'like', '%' . $search . '%')
+                    ->orWhere('mensaje', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        // Filtra por sede si se proporciona un valor distinto de 'all'
+        if (!empty($sede) && $sede !== 'all') {
+            $query->where('sede', $sede);
+        }
+
+        // Ordena por fecha de creación y obtiene los resultados
+        $webMessages = $query->orderBy('fecha_creacion', 'desc')->get();
+
+        // Decodifica los adjuntos en cada mensaje
         foreach ($webMessages as $message) {
-            // Convertir la cadena JSON en un arreglo PHP
             $message->adjuntos = json_decode($message->adjuntos);
         }
 
         return response()->json($webMessages);
     }
+
 
     // Borra un mensaje
     public function borrarWebMessage($id)

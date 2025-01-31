@@ -8,7 +8,7 @@
 
     <!-- Título Dinámico -->
     <title>@yield('title', 'Alás, Vigil y Nevot Asesores')</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/logoApp3.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/fondoBlancoAV2.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

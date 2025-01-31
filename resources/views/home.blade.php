@@ -173,7 +173,7 @@
     <div class="container mx-auto flex justify-between items-center">
         <!-- Logo del Footer -->
         <div class="footer-logo">
-            <img class="logo-img" src="{{ asset('images/logoGestoria2.png') }}" alt="Logo">
+            <img class="logo-img" src="{{ asset('images/fondoNegro2.png') }}" alt="Logo">
         </div>
     </div>
     <div class="text-center mt-4">

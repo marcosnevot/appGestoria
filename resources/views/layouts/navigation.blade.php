@@ -1,26 +1,33 @@
-<div class="contact-info">
-  
-        <p>Barbastro: 974315330 | nacho@alasvigilnevot.com</p>
-        <p>Monzón: 974404858 | asesoria@nevotsolano.es</p>
-
-</div>
-
-<nav class="navbar w-full">
-
-    <div class="logo">
-        <a href="{{ route('index') }}">
-            <img class="logo-img" src="{{ asset('images/fondoNegro2.png') }}" alt="Logo">
+<nav class="navbar">
+    <div class="navbar-container">
+        <!-- Logo -->
+        <a href="{{ route('home') }}" class="navbar-logo">
+            <img src="{{ asset('images/fondoBlancoHorizontal.png') }}" alt="Logo de la gestoría">
         </a>
-    </div>
 
-    <button class="menu-btn">
-        <img src="images/menuIcon.png" alt="Menu">
-    </button>
+        <!-- Menú principal -->
+        <ul class="navbar-menu">
+            <li><a href="{{ route('home') }}" class="nav-link">Inicio</a></li>
+            <li><a href="{{ route('home') }}" class="nav-link">Empresa</a></li>
+            <li><a href="{{ route('home') }}" class="nav-link">Servicios</a></li>
+            <li><a href="{{ route('home') }}" class="nav-link">Contacto</a></li>
+        </ul>
 
-    <div class="nav-links">
-        <a href="" class="nav-link" onclick="scrollToSection(event, 'home')">INICIO</a>
-        <a href="" class="nav-link" onclick="scrollToSection(event, 'aboutus')">EMPRESA</a>
-        <a href="" class="nav-link" onclick="scrollToSection(event, 'services')">SERVICIOS</a>
-        <a href="" class="nav-link" onclick="scrollToSection(event, 'contact')">CONTACTO</a>
+        <!-- Botón del menú móvil -->
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 </nav>
+
+
+
+@push('styles')
+    @vite(['resources/css/layouts/navigation.css'])
+@endpush
+
+@push('scripts')
+    @vite(['resources/js/layouts/navigation.js'])
+@endpush

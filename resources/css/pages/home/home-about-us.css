@@ -1,0 +1,193 @@
+/* 🔹 Sección About Us */
+/* =============================
+   Sección principal (about)
+============================= */
+
+/* Sección con fondo claro y partículas */
+.with-particles {
+    position: relative;
+    /* Crea nuevo contexto de posicionamiento */
+    background-color: #f8f8f8;
+    overflow: hidden;
+    /* Evita que el canvas se salga */
+    /* OJO: no abuses de padding aquí si ya usas padding en .about-block */
+}
+
+/* El canvas de partículas rellena la sección .with-particles */
+#tsparticles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Ajusta la altura que desees para tus partículas */
+    z-index: 1;
+}
+
+/* Contenido sobre las partículas */
+.with-particles .about-container {
+    position: relative;
+    z-index: 2;
+    /* Encima del canvas */
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-section {
+    width: 100%;
+    background-color: #f8f8f8;
+    /* padding general para separar un poco la sección */
+    padding: 0px 0;
+}
+
+/* Contenedor que limita el ancho de la PRIMERA sección */
+.about-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    /* Ajusta la separación interna entre bloques */
+    padding: 0 20px;
+}
+
+/* Bloques base (texto + imagen uno al lado del otro) */
+.about-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    /* Espacio vertical */
+    padding: 120px 0;
+}
+
+/* =============================
+     Bloque oscuro a 100% de ancho
+  ============================= */
+.about-block.dark-bg {
+    background-color: #1e1e1e;
+    width: 100%;
+    /* Se expande a todo el ancho de la pantalla */
+    position: relative;
+    left: 50%;
+    /* Inicia en el centro horizontal */
+    transform: translateX(-50%);
+    /* Para que quede centrada la franja */
+    margin: 0;
+    padding: 0;
+    /* Quitamos padding para no duplicar */
+}
+
+/* Contenedor interno para centrar y limitar ancho dentro de la franja oscura */
+.dark-inner-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 120px 20px;
+    /* Espacio interno */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* =============================
+     Texto
+  ============================= */
+.about-text {
+    flex: 1;
+    max-width: 600px;
+    /* Ajusta según tu preferencia */
+}
+
+.about-text h2 {
+    font-size: 50px;
+    font-weight: 700;
+    color: #222;
+    /* Color en fondos claros */
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.about-text p {
+    font-size: 18px;
+    color: #000000;
+    /* Color en fondos claros */
+    line-height: 1.6;
+}
+
+/* Cambiamos color para la sección oscura */
+.dark-bg .about-text h2 {
+    color: #fff;
+}
+
+.dark-bg .about-text p {
+    color: #ccc;
+}
+
+/* =============================
+     Imagenes
+  ============================= */
+.about-img {
+    flex: 1;
+    max-width: 600px;
+    /* Ajusta según tu preferencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto hover */
+.about-img img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* =============================
+     Animaciones fade-in
+  ============================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ► 1) Estado inicial: "OCULTO" con translateX */
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(400px);
+    /* Empieza desplazada a la derecha */
+    transition: opacity 0.8s ease, transform 2s ease;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-400px);
+    /* Empieza desplazada a la izquierda */
+    transition: opacity 0.8s ease, transform 2s ease;
+}
+
+/* Cuando se agrega .show, se hace visible */
+.slide-in-right.show,
+.slide-in-left.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+

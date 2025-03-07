@@ -1,0 +1,257 @@
+
+
+/* ------------------------------- */
+/*       Sección de Contacto       */
+/* ------------------------------- */
+
+.contact-section {
+    padding: 80px 5%;
+}
+
+.contact-section.bg-dark {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+.contact-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Título y subtítulo */
+.section-title-dark-bg {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    animation: fadeInDown 1s ease-out;
+}
+
+.contact-subtitle {
+    font-size: 20px;
+    color: #ccc;
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease-out 0.5s;
+}
+
+/* Contenedor de tarjetas */
+.contact-cards {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;  /* Agregado para que todos los hijos se estiren a la misma altura */
+}
+
+/* Tarjeta de contacto */
+.contact-card {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.336);
+    min-height: 600px;  /* Opcional: fuerza una altura mínima */
+}
+
+
+/* Mapa */
+.map-container {
+    width: 100%;
+    height: 250px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Área de Información (Glassmorphism) */
+.contact-info {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.3));
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Título de la sede */
+.sede-title {
+    font-size: 36px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #fff;
+    position: relative;
+}
+
+.sede-title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #FF8C00, #FFA500);
+    border-radius: 2px;
+}
+
+/* Contact Items */
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.3s ease;
+    height: 100px;  /* Fuerza una altura fija para todos */
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Icono con efecto pulsante y fondo en tonos naranja */
+.contact-item .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF8C00, #FFA500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.contact-item:hover .icon {
+    transform: scale(1.15);
+}
+
+/* Texto de cada dato */
+.info-text {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #ddd;
+    text-align: left;
+}
+
+.info-text .label {
+    display: block;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 3px;
+}
+
+.info-text .detail {
+    display: block;
+    font-weight: 400;
+    color: #ccc;
+}
+
+/* CTA */
+.contact-cta {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    /* Fondo blanco base */
+    background-color: #fff;
+    /* Definimos el gradiente que queremos mostrar al hover */
+    background-image: linear-gradient(45deg, #FFA500, #FF8C00);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Inicialmente, el gradiente ocupa 0% del ancho */
+    background-size: 0% 100%;
+
+    /* Estilos del botón */
+    color: #222;
+    padding: 16px 50px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    display: inline-block;
+
+    /* Transiciones: background-size, transform y color */
+    transition: background-size 0.4s ease-in-out, transform 0.6s ease, color 0.4s ease;
+}
+
+.btn:hover {
+    /* Animamos el desplazamiento */
+    transform: translateY(-3px);
+    /* Expandimos el gradiente para que cubra todo el botón */
+    background-size: 100% 100%;
+    /* Cambiamos el color del texto para que contraste con el degradado */
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .contact-card {
+        width: 100%;
+    }
+
+    .contact-info {
+        padding: 20px;
+    }
+}
+
+/* ------------------- */
+/* Animaciones CSS     */
+/* ------------------- */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}

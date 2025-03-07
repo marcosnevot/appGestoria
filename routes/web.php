@@ -26,7 +26,8 @@ Route::middleware('auth')->group(function () {
 });
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::post('/contactForm', [WebMessageController::class, 'store'])
     ->name('form.store')

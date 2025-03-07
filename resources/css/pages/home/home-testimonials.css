@@ -1,0 +1,358 @@
+
+/* Sección Opiniones */
+
+/* Contenedor principal de la sección de opiniones */
+.testimonials-section {
+    width: 100%;
+    padding: 80px 5%;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: #f8f8f8;
+
+}
+
+/* Contenedor de la distribución: info a la izquierda y burbujas a la derecha */
+.testimonials-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    max-width: 1500px;
+    width: 100%;
+    gap: 80px;
+}
+
+/* Contenedor principal del bloque izquierdo */
+.testimonials-info {
+    flex: 1;
+    max-width: 40%;
+    margin-top: 40px;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    background: rgba(167, 167, 167, 0.281);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+
+}
+
+
+/* Opcional: Estilo para el ícono decorativo */
+.info-decor {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+.info-icon {
+    font-size: 40px;
+    display: inline-block;
+}
+
+/* Título */
+.section-title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.2;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Texto descriptivo */
+.testimonials-text {
+    font-size: 18px;
+    color: #222;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.google-verified {
+    display: flex;
+    justify-content: center;
+    /* Alineado con el contenido */
+    align-items: center;
+    margin-top: 10px;
+    /* Separación con el texto */
+}
+
+.google-verified img {
+    height: 100px;
+    /* Ajuste de tamaño para que se vea bien */
+    max-width: 100%;
+    /* Evita desbordes en pantallas pequeñas */
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.1));
+    /* Efecto de sombra sutil */
+}
+
+
+/* Adaptación responsive para móviles y tablets */
+@media (max-width: 768px) {
+    .testimonials-info {
+        max-width: 100%;
+        margin-top: 30px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .testimonials-text {
+        font-size: 16px;
+    }
+
+    .info-cta {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+.testimonials-container {
+    position: relative;
+    width: 60%;
+    margin: 40px auto;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    overflow: hidden;
+    z-index: 3;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonials-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    border-color: #FFA500;
+}
+
+
+/* Pseudo-elemento decorativo: crea un sutil efecto de luz o textura en el fondo */
+.testimonials-container::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.02), transparent 80%);
+    transform: rotate(20deg);
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+
+#bubbles-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.bubble {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 50%;
+    /* Usamos un gradiente radial para simular la curvatura y la iluminación */
+    background: radial-gradient(circle at 30% 30%, #fff, #c1cecf71 70%);
+    /* Sombra interior para dar profundidad + sombra exterior para elevación */
+    box-shadow: inset 0 0 20px rgba(139, 184, 192, 0.637), 0 4px 10px rgba(25, 17, 145, 0.15);
+    overflow: hidden;
+}
+
+/* Capa adicional para simular un sutil brillo global sobre la burbuja */
+.bubble::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Este gradiente crea un efecto de luz difusa */
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), transparent 70%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    /* para que no interfiera con la interacción */
+}
+
+/* Pseudo-elemento para simular un reflejo / highlight puntual */
+.bubble::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /* Un gradiente radial que simula el reflejo de la luz en la superficie curva */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(184, 19, 19, 0));
+    transform: rotate(20deg);
+    pointer-events: none;
+}
+
+
+
+/* Contenedor interno (contenido de la burbuja) */
+.bubble-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Cada estrella se posiciona en el centro de la burbuja */
+.estrella {
+    position: absolute;
+    left: 125px;
+    /* Centro horizontal de la burbuja (250px / 2) */
+    top: 125px;
+    /* Centro vertical de la burbuja */
+    font-size: 1.4rem;
+    color: #FFD700;
+    /* Dorado */
+    /* Se aplica un translate inicial para centrar la estrella en ese punto */
+    transform: translate(-50%, -50%);
+}
+
+/* Ubicamos cada estrella sobre el arco usando transformaciones en cadena */
+.estrella:nth-of-type(1) {
+    transform: translate(-50%, -50%) rotate(-120deg) translate(0, -110px) rotate(120deg);
+}
+
+.estrella:nth-of-type(2) {
+    transform: translate(-50%, -50%) rotate(-105deg) translate(0, -110px) rotate(105deg);
+}
+
+.estrella:nth-of-type(3) {
+    transform: translate(-50%, -50%) rotate(-90deg) translate(0, -110px) rotate(90deg);
+}
+
+.estrella:nth-of-type(4) {
+    transform: translate(-50%, -50%) rotate(-75deg) translate(0, -110px) rotate(75deg);
+}
+
+.estrella:nth-of-type(5) {
+    transform: translate(-50%, -50%) rotate(-60deg) translate(0, -110px) rotate(60deg);
+}
+
+/* Los demás elementos dentro de la burbuja (ajusta según lo necesites) */
+.nombre {
+    position: absolute;
+    top: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    line-height: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.avatar {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.texto {
+    position: absolute;
+    width: 60%;
+    left: 50%;
+    top: 140px;
+    max-height: 28%;
+    max-width: 60%;
+    transform: translateX(-50%);
+    /* Tipografía y legibilidad */
+    font-size: 0.9rem;
+    /* Un poco más grande para mejorar la lectura */
+    color: #444;
+    /* Un gris oscuro más neutro y elegante */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 0 10px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.texto {
+    position: absolute;
+    width: 60%;
+    left: 50%;
+    top: 140px;
+    transform: translateX(-50%);
+
+    /* Tipografía y legibilidad */
+    font-size: 0.8rem;
+    /* Un poco más grande para mejorar la lectura */
+    color: #444;
+    /* Un gris oscuro más neutro y elegante */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    /* Sutil espaciado entre letras para mayor claridad */
+
+    /* Truncamiento a 4 líneas */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Si el texto tiene 2 líneas, se muestra un poco más grande */
+.texto.lines-2 {
+    font-size: 1.0rem;
+    top: 130px;
+
+}
+
+/* Si tiene 3 líneas, tamaño intermedio */
+.texto.lines-3 {
+    font-size: 0.9rem;
+}
+
+/* Si tiene 4 líneas, se reduce para ajustar */
+.texto.lines-4 {
+    font-size: 0.7rem;
+}
+
+.fecha {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    color: #666;
+}

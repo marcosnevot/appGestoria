@@ -10,148 +10,35 @@
     <title>@yield('title', 'Alás, Vigil y Nevot Asesores')</title>
     <link rel="icon" type="image/png" href="{{ asset('images/fondoBlancoAV2.png') }}">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcaAhQqAAAAAFamvFY3b9SVjFLXSgnFyILDgAzr"></script>
-    <script src="{{ asset('build/assets/custom.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    @vite(['resources/css/app.css','resources/css/navigation.css','resources/css/aboutus.css','resources/css/services.css','resources/css/home.css', 'resources/css/contact.css',"resources/css/footer.css",'resources/js/custom.js','resources/js/app.js'])
 </head>
 
-<body class="font-sans">
-    <div class="container bg-gray-100 gray:bg-gray-900">
-        <!-- Barra de Navegación -->
-        @include('layouts.navigation')
+<body>
+    <!-- Navbar -->
+    @include('layouts.navigation')
 
-        <!-- Contenido de la Página -->
-        <!-- Contenido Dinámico -->
-        <main>
-            @yield('content')
-        </main>
+    <!-- Contenido Principal -->
+    <main>
+        @yield('content')
+    </main>
 
-        <!-- Popup de Cookies -->
-        <!-- Popup de Cookies -->
-        <div id="cookie-popup" class="cookie-popup">
-            <div class="cookie-popup-text">
-                <p>
-                    Esta web solo utiliza las cookies técnicas estrictamente necesarias para su correcto funcionamiento.
-                </p>
-                <p>
-                    Consulta nuestras
-                    <a href="{{ route('politica-privacidad') }}" class="cookie-link">Política de Privacidad</a> y
-                    <a href="{{ route('aviso-legal') }}" class="cookie-link">Aviso Legal</a>.
+    <!-- Footer -->
+    @include('layouts.footer')
 
-                </p>
-            </div>
-            <div class="cookie-popup-buttons">
-                <button id="accept-cookies" class="cookie-button accept-button">Aceptar</button>
-                <a href="{{ route('politica-cookies') }}" class="cookie-button info-button">Política Cookies</a>
-            </div>
-        </div>
-
-
-        <script>
-            // JavaScript para la funcionalidad del menú hamburguesa
-            document.querySelector('.menu-btn').addEventListener('click', function() {
-                document.querySelector('.nav-links').classList.toggle('active');
-            });
-
-            // Variables para controlar el desplazamiento del navbar
-            let prevScrollPos = window.pageYOffset;
-
-            window.onscroll = function() {
-                let currentScrollPos = window.pageYOffset;
-                const navbar = document.querySelector('.navbar');
-
-                // Mostrar u ocultar el navbar según el desplazamiento
-                if (prevScrollPos > currentScrollPos) {
-                    navbar.classList.remove('hidden'); // Mostrar el navbar al desplazarse hacia arriba
-                } else {
-                    navbar.classList.add('hidden'); // Ocultar el navbar al desplazarse hacia abajo
-                }
-
-                prevScrollPos = currentScrollPos;
-            };
-
-            // Función para desplazarse suavemente a una sección específica
-            function scrollToSection(event, sectionId) {
-                event.preventDefault();
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }
-
-            // Variables para las secciones de "sede"
-            const sedeIzquierda = document.getElementById('sede-izquierda');
-            const sedeDerecha = document.getElementById('sede-derecha');
-
-            // Función para cambiar el tamaño de las secciones de "sede" al pasar el ratón
-            function adjustSedeFlexBasis(leftBasis, rightBasis) {
-                sedeIzquierda.style.flexBasis = leftBasis;
-                sedeDerecha.style.flexBasis = rightBasis;
-            }
-
-            sedeIzquierda.addEventListener('mouseenter', function() {
-                adjustSedeFlexBasis('60%', '40%');
-            });
-
-            sedeDerecha.addEventListener('mouseenter', function() {
-                adjustSedeFlexBasis('40%', '60%');
-            });
-
-            document.querySelector('.sede-container').addEventListener('mouseleave', function() {
-                adjustSedeFlexBasis('50%', '50%');
-            });
-
-            // Función para alternar el contenido de "sede"
-            function toggleSedeContent(sede) {
-                const contenido = sede.querySelector('.sede-contenido');
-                const contenidoEmpresa = contenido.querySelector('.empresa');
-                const contenidoInfo = contenido.querySelector('.info');
-
-                contenidoEmpresa.classList.toggle('hidden');
-                contenidoInfo.classList.toggle('hidden');
-            }
-
-            // Función para restablecer el contenido de "sede"
-            function resetSedeContent(sede) {
-                const contenido = sede.querySelector('.sede-contenido');
-                const contenidoEmpresa = contenido.querySelector('.empresa');
-                const contenidoInfo = contenido.querySelector('.info');
-
-                contenidoEmpresa.classList.remove('hidden');
-                contenidoInfo.classList.add('hidden');
-            }
-
-            sedeIzquierda.addEventListener('mouseenter', function() {
-                toggleSedeContent(this);
-            });
-
-            sedeIzquierda.addEventListener('mouseleave', function() {
-                resetSedeContent(this);
-            });
-
-            sedeDerecha.addEventListener('mouseenter', function() {
-                toggleSedeContent(this);
-            });
-
-            sedeDerecha.addEventListener('mouseleave', function() {
-                resetSedeContent(this);
-            });
-        </script>
-
-
-    </div>
+    <!-- Estilos Globales -->
+    @vite(['resources/css/app.css'])
+    @stack('styles')
+    <!-- Scripts Globales -->
+    @vite(['resources/js/app.js'])
+    @stack('scripts')
 </body>
 
 </html>

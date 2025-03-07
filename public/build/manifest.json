@@ -4,9 +4,9 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
-  "resources/css/navigation.css": {
+  "resources/css/layouts/navigation.css": {
     "file": "assets/navigation.css",
-    "src": "resources/css/navigation.css",
+    "src": "resources/css/layouts/navigation.css",
     "isEntry": true
   },
   "resources/css/home.css": {
